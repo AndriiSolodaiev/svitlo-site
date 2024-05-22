@@ -1,5 +1,5 @@
-$default-font: 'PFDinDisplayPro', sans-serif;
-$default-font2: 'montser', sans-serif;
+$default-font: 'Montserrat', sans-serif;
+$default-font2: 'SFProDisplay', sans-serif;
 
 $mc2: #ff554c;
 $mc3: #e5df06;
@@ -10,70 +10,85 @@ $wc: #fff;
 $bc: #000;
 $bc2: #000;
 
-$bg-color: rgba(0,91,130,1);
-$accent-color: rgba(0,38,58,1);
-$color-body: rgba(110,162,188,1);
-$text-color: rgba(217,230,237,1);
-$second-accent-color: rgba(240,186,82,1);
+$text-color: rgba(141, 155, 164, 1);
+$bg-color: #F5F5F5;
+$white-color: rgba(255, 255, 255, 1);
+$light-gray-color: rgba(250, 250, 250, 1);
+$middle-gray-color: rgba(241, 241, 243, 1);
+$dark-color: rgba(29, 29, 31, 1);
+$second-accent-color: rgba(231, 148, 66, 1);
+$accent-color: rgba(73, 74, 82, 1);
+
+
 
 
 @mixin title-text () {
-	font-size: 80px;
-	font-family: Gotham Pro;
-	font-weight: 400;
+
+	font-family: $default-font2;
+	font-size: 96px;
 	font-style: normal;
-	line-height: 120%;
-	letter-spacing: -0.06em;
-	text-decoration: none;
-	text-transform: uppercase;
-}
-@mixin subtitle-text() {
-	font-size: 40px;
-	font-family: Gotham Pro;
 	font-weight: 500;
-	font-style: normal;
-	line-height: 120%;
-	letter-spacing: -0.06em;
-	text-decoration: none;
-	text-transform: uppercase;
+	line-height: 90%;
+	color: $white-color;
 }
-@mixin article-title () {
-	font-size: 32px;
-	font-family: Gotham Pro;
-	font-weight: 700;
+
+@mixin subtitle-text () {
+
+	font-family: $default-font2;
+	font-size: 60px;
 	font-style: normal;
-	line-height: 140%;
-	letter-spacing: -0.04em;
-	text-decoration: none;
-	text-transform: none;
+	font-weight: 500;
+	line-height: 90%;
+	color: $white-color;
 }
+
+// @mixin subtitle-text() {
+// 	font-size: 40px;
+// 	font-family: Gotham Pro;
+// 	font-weight: 500;
+// 	font-style: normal;
+// 	line-height: 120%;
+// 	letter-spacing: -0.06em;
+// 	text-decoration: none;
+// 	text-transform: uppercase;
+// }
+
+// @mixin article-title () {
+// 	font-size: 32px;
+// 	font-family: Gotham Pro;
+// 	font-weight: 700;
+// 	font-style: normal;
+// 	line-height: 140%;
+// 	letter-spacing: -0.04em;
+// 	text-decoration: none;
+// 	text-transform: none;
+// }
+
 @mixin general-text() {
-	font-size: 20px;
-	font-family: Gotham Pro;
+
+	font-family: $default-font;
+	font-size: 18px;
+	font-style: normal;
 	font-weight: 400;
-	font-style: normal;
-	line-height: 140%;
-	letter-spacing: -0.04em;
-	text-decoration: none;
-	text-transform: none;
+	line-height: normal;
 }
-@mixin general-text-bold() {
-	font-size: 20px;
-	font-family: Gotham Pro;
-	font-weight: 700;
-	font-style: normal;
-	line-height: 140%;
-	letter-spacing: -0.04em;
-	text-decoration: none;
-	text-transform: none;
-}
+
+// @mixin general-text-bold() {
+// 	font-size: 20px;
+// 	font-family: Gotham Pro;
+// 	font-weight: 700;
+// 	font-style: normal;
+// 	line-height: 140%;
+// 	letter-spacing: -0.04em;
+// 	text-decoration: none;
+// 	text-transform: none;
+// }
+
 @mixin tiny-text() {
+	color: $white-color;
+	font-family: $default-font;
 	font-size: 12px;
-	font-family: Gotham Pro;
-	font-weight: 500;
 	font-style: normal;
-	line-height: 140%;
-	letter-spacing: -0.04em;
-	text-decoration: none;
-	text-transform: uppercase;
+	font-weight: 500;
+	line-height: normal;
 }

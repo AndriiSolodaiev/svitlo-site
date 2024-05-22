@@ -1,0 +1,134 @@
+.footer-bg {
+  width: 100%;
+  background-color: $accent-color;
+  border-radius: 12px;
+  padding: 40px 20px 0px 20px;
+}
+
+.footer {
+  padding-bottom: 10px;
+
+  &-tools-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-bottom: 60px;
+  }
+
+  &__logo {
+    display: block;
+    width: 146px;
+    height: 63px;
+    margin-bottom: 40px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .call-back {
+    padding: 22px;
+    border-radius: 12px;
+    border: 1px solid $text-color;
+    backdrop-filter: blur(12px);
+    width: fit-content;
+    @include general-text;
+    color: $white-color;
+    font-weight: 500;
+  }
+
+  &__block-title {
+    @include general-text;
+    color: $text-color;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .nav__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .nav__link {
+      @include general-text;
+      color: $white-color;
+
+    }
+  }
+
+  &__projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .nav__link {
+      @include general-text;
+      color: $white-color;
+
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    a {
+      @include general-text;
+      color: $white-color;
+    }
+  }
+
+  &__up-btn {
+    width: 58px;
+    height: 44px;
+    border-radius: 12px;
+    border: 1px solid $text-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+  }
+
+  &__socials {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    h3 {
+      @include subtitle-text;
+      color: $white-color;
+    }
+  }
+
+  &__bottom-block {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    h4 {
+      @include general-text;
+      color: $white-color;
+      max-width: 270px;
+
+    }
+
+    .footer__license {
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      @include tiny-text;
+      color: $white-color;
+      opacity: 0.5;
+    }
+
+    .dev-logo {
+      width: 52px;
+      height: 57px;
+    }
+  }
+}

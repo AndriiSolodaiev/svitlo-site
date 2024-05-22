@@ -24,7 +24,64 @@ block scripts
   script(defer src='./assets/scripts/footer.bundle.js')
   script(defer src='./assets/scripts/index.bundle.js')
 block content
- 
+  section.projects.container
+    .left-block
+      a(href="/").project-card 
+        img(src="./assets/images/Projects/project_1.jpg" alt="project_1")
+        .project-card__mask 
+        .project-card__text 
+          p Котеджне  містечко
+          h2 Hill 
+            br
+            | Park
+      a(href="/").project-card 
+        img(src="./assets/images/Projects/project_2.jpg" alt="project_2")
+        .project-card__mask 
+        .project-card__text 
+          p Котеджне  містечко
+          h2 Hidden 
+            br
+            | House
+      a(href="/").project-card 
+        img(src="./assets/images/Projects/project_3.jpg" alt="project_3")
+        .project-card__mask 
+        .project-card__text 
+          p Котеджне  містечко
+          h2 O.Krasa
+
+    .right-block
+      a(href="/").project-card 
+        img(src="./assets/images/Projects/project_4.jpg" alt="project_4")
+        .project-card__mask 
+        .project-card__text 
+          p Котеджне  містечко
+          h2 Wooden 
+            br
+            | House
+      a(href="/").project-card 
+        img(src="./assets/images/Projects/project_5.jpg" alt="project_5")
+        .project-card__mask 
+        .project-card__text 
+          p Котеджне  містечко
+          h2 Loft
+            br
+            | Affair
+      a(href="/").project-card 
+        img(src="./assets/images/Projects/project_6.jpg" alt="project_6")
+        .project-card__mask 
+        .project-card__text 
+          p Колекція будинків
+          h2 Loft
+            br
+            | City
+      a(href="/").project-card 
+        img(src="./assets/images/Projects/project_7.jpg" alt="project_7")
+        .project-card__mask 
+        .project-card__text 
+          p Колекція будинків
+          h2 City 
+            br
+            | House
 
 block footer
   include ../includes/footer.pug

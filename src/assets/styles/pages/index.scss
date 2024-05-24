@@ -88,9 +88,15 @@
     padding: 30px;
 
     p {
-      @include tiny-text;
-      color: $white-color;
-      margin-bottom: 10px;
+      display: none;
+
+      @include tablet {
+        display: block;
+        @include general-text;
+        color: $white-color;
+        margin-bottom: 10px;
+      }
+
     }
 
     h2 {

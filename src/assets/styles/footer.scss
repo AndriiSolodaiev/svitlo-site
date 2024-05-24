@@ -2,21 +2,66 @@
   width: 100%;
   background-color: $accent-color;
   border-radius: 12px;
-  padding: 40px 20px 0px 20px;
+  padding: 32px 8px 0px 8px;
+
+  @include tablet {
+    padding: 40px 16px 0px 16px;
+  }
+
+  @include laptop {
+    padding: 40px 20px 0px 20px;
+  }
+
+  @include desktop {
+    padding: 40px 20px 0px 20px;
+  }
 }
 
 .footer {
   padding-bottom: 10px;
 
   &-tools-wrap {
+
+
     display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    margin-bottom: 60px;
+    flex-wrap: wrap;
+    row-gap: 16px;
+    margin-bottom: 32px;
+    position: relative;
+
+    @include tablet {
+      row-gap: 0;
+      justify-content: space-between;
+      align-items: stretch;
+      margin-bottom: 65px;
+    }
+
+    @include laptop {
+      row-gap: 0;
+      justify-content: space-between;
+      align-items: stretch;
+      margin-bottom: 60px;
+    }
+  }
+
+  &__logo-wrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    // @include tablet {
+    //   align-items: center;
+    // }
+    @include laptop {
+      display: block;
+      width: auto;
+    }
   }
 
   &__logo {
     display: block;
+    align-self: flex-start;
     width: 146px;
     height: 63px;
     margin-bottom: 40px;
@@ -36,13 +81,23 @@
     @include general-text;
     color: $white-color;
     font-weight: 500;
+
+    @media screen and (min-width: 768px) and (max-width: 1365px) {
+      position: absolute;
+      bottom: -122px;
+      left: 0;
+    }
   }
 
   &__block-title {
     @include general-text;
     color: $text-color;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
+
+    @include tablet {
+      margin-bottom: 20px;
+    }
   }
 
   .nav__list {
@@ -54,6 +109,16 @@
       @include general-text;
       color: $white-color;
 
+    }
+  }
+
+  &__projects {
+    order: 3;
+    width: 50%;
+
+    @include tablet {
+      order: 3;
+      width: auto;
     }
   }
 
@@ -69,14 +134,50 @@
     }
   }
 
+  &__nav {
+    order: 4;
+    width: 50%;
+
+    @include tablet {
+      order: 2;
+      width: auto;
+    }
+  }
+
   &__contacts {
     display: flex;
-    justify-content: space-between;
+    gap: 16px;
     flex-direction: column;
+    order: 2;
+    width: 100%;
+
+    &::after {
+      content: "";
+      width: 100%;
+      background-color: $text-color;
+      opacity: 0.2;
+      height: 1px;
+      border-radius: 1px;
+      margin-top: 16px;
+
+    }
+
+    @include tablet {
+      gap: 0;
+      order: 4;
+      width: auto;
+      justify-content: space-between;
+
+      &::after {
+        display: none
+      }
+    }
 
     a {
       @include general-text;
       color: $white-color;
+      display: block;
+      max-width: 250px;
     }
   }
 
@@ -88,7 +189,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    align-self: flex-start;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    @include laptop {
+      order: 4;
+      position: static;
+      align-self: flex-start;
+    }
   }
 
   &__socials {
@@ -96,6 +205,45 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+
+    @media screen and (min-width: 768px) and (max-width: 1365px) {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .socials__list {
+        order: -1;
+        justify-content: flex-end;
+        width: 100%;
+        margin-bottom: 40px;
+        position: relative;
+
+        &::before {
+          content: "";
+          width: 100%;
+          background-color: $text-color;
+          opacity: 0.2;
+          height: 1px;
+          border-radius: 1px;
+
+          position: absolute;
+          top: -24px;
+          left: 0;
+        }
+
+        &::after {
+          content: "";
+          width: 100%;
+          background-color: $text-color;
+          opacity: 0.2;
+          height: 1px;
+          border-radius: 1px;
+          position: absolute;
+          bottom: -24px;
+          left: 0;
+
+        }
+      }
+    }
 
     h3 {
       @include subtitle-text;

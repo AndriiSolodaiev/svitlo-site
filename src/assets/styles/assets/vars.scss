@@ -10,14 +10,14 @@ $wc: #fff;
 $bc: #000;
 $bc2: #000;
 
-$text-color: rgba(141, 155, 164, 1);
+$text-color: #8d9ba4;
 $bg-color: #F5F5F5;
 $white-color: rgba(255, 255, 255, 1);
 $light-gray-color: rgba(250, 250, 250, 1);
 $middle-gray-color: rgba(241, 241, 243, 1);
 $dark-color: rgba(29, 29, 31, 1);
 $second-accent-color: rgba(231, 148, 66, 1);
-$accent-color: rgba(73, 74, 82, 1);
+$accent-color: #494a52;
 
 
 
@@ -25,21 +25,45 @@ $accent-color: rgba(73, 74, 82, 1);
 @mixin title-text () {
 
 	font-family: $default-font2;
-	font-size: 96px;
+	font-size: 32px;
 	font-style: normal;
 	font-weight: 500;
 	line-height: 90%;
 	color: $white-color;
+
+	@include tablet {
+		font-size: 48px;
+	}
+
+	@include laptop {
+		font-size: 72px;
+	}
+
+	@include desktop {
+		font-size: 96px;
+	}
 }
 
 @mixin subtitle-text () {
 
 	font-family: $default-font2;
-	font-size: 60px;
+	font-size: 24px;
 	font-style: normal;
 	font-weight: 500;
 	line-height: 90%;
 	color: $white-color;
+
+	@include tablet {
+		font-size: 30px;
+	}
+
+	@include laptop {
+		font-size: 45px;
+	}
+
+	@include desktop {
+		font-size: 60px;
+	}
 }
 
 // @mixin subtitle-text() {
@@ -67,10 +91,15 @@ $accent-color: rgba(73, 74, 82, 1);
 @mixin general-text() {
 
 	font-family: $default-font;
-	font-size: 18px;
+	font-size: 16px;
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
+
+
+	@include desktop {
+		font-size: 18px;
+	}
 }
 
 // @mixin general-text-bold() {

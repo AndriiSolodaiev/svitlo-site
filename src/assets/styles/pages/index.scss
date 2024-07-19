@@ -12,6 +12,65 @@
   width: calc(50% - 5px);
 
   .project-card {
+    height: calc(100vh - 600px);
+
+    &:nth-child(2n -1) {
+      height: calc(100vh - 401px);
+    }
+
+  }
+
+  @include laptop {
+    .project-card {
+      height: calc(100vh - 300px);
+
+      &:nth-child(2n -1) {
+        height: calc(100vh - 101px);
+      }
+
+    }
+  }
+
+}
+
+.right-block {
+  @extend .left-block;
+
+  .project-card {
+    &:nth-child(2n -1) {
+      height: calc(100vh - 500px)
+    }
+
+    // height: 800px;
+    &:nth-child(2n) {
+      height: calc(100vh - 450px);
+    }
+
+    &:last-child {
+      height: calc(100vh - 550px);
+    }
+  }
+
+  @include laptop {
+    .project-card {
+      &:nth-child(2n -1) {
+        height: calc(100vh - 200px)
+      }
+
+      // height: 800px;
+      &:nth-child(2n) {
+        height: calc(100vh - 150px);
+      }
+
+      &:last-child {
+        height: calc(100vh - 250px);
+      }
+    }
+  }
+}
+
+.tablet.landscape {
+  .left-block .project-card {
     height: calc(100vh - 300px);
 
     &:nth-child(2n -1) {
@@ -19,12 +78,8 @@
     }
 
   }
-}
 
-.right-block {
-  @extend .left-block;
-
-  .project-card {
+  .right-block .project-card {
     &:nth-child(2n -1) {
       height: calc(100vh - 200px)
     }

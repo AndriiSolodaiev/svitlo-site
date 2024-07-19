@@ -197,6 +197,17 @@ body {
   background-color: $white-color;
   font-weight: 500;
   color: $text-color;
+  background-color: $bg-color-mob;
+
+  @include tablet {
+    background-color: $white-color;
+  }
+
+}
+
+input,
+button {
+  font-family: $default-font;
 }
 
 body input,
@@ -207,7 +218,7 @@ body textarea {
 
 ::-webkit-scrollbar {
   height: 3px;
-  width: 8px;
+  width: 4px;
 }
 
 /* Track */
@@ -222,6 +233,7 @@ body textarea {
   // background: $mc;
   border-radius: 20px;
   background-color: $accent-color;
+
   // -webkit-box-shadow: inset 0 0 6px #e2e3e4;
   //-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }

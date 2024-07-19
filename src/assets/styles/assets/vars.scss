@@ -12,9 +12,10 @@ $bc2: #000;
 
 $text-color: #8d9ba4;
 $bg-color: #F5F5F5;
+$bg-color-mob: #E6E6E6;
 $white-color: rgba(255, 255, 255, 1);
 $light-gray-color: rgba(250, 250, 250, 1);
-$middle-gray-color: rgba(241, 241, 243, 1);
+$middle-gray-color: rgb(241, 241, 243);
 $dark-color: rgba(29, 29, 31, 1);
 $second-accent-color: rgba(231, 148, 66, 1);
 $accent-color: #494a52;
@@ -87,6 +88,20 @@ $accent-color: #494a52;
 // 	text-decoration: none;
 // 	text-transform: none;
 // }
+@mixin block-title() {
+
+	font-family: $default-font2;
+	font-size: 28px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+	color: $accent-color;
+
+
+	@include desktop {
+		font-size: 38px;
+	}
+}
 
 @mixin general-text() {
 

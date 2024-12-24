@@ -10,42 +10,58 @@ import { initSmoothScrolling } from '../modules/scroll/leniscroll';
 
 initSmoothScrolling();
 gsap.registerPlugin(ScrollTrigger, CustomEase);
+const gap = 8;
 const leftBlock = document.querySelector('.left-block');
+const leftBlockCards = document.querySelectorAll('.left-block .project-card');
+const rightBlockCards = document.querySelectorAll('.right-block .project-card');
+
 let calcOffset =
-  window.innerHeight < window.innerWidth
-    ? 101 * 2 + 300 - 2 * 200 - 150 - 250 + 10
-    : 401 * 2 + 600 - 2 * 500 - 450 - 550 + 10;
-let offset = window.innerHeight + calcOffset; // формула обчислення числа:  (к-ть Непарних карток зліва) * 101 + (к-ть Парних карток зліва) * 300 - (к-ть Непарних карток справа) * 200 - (к-ть Парних карток справа) * 100 - (різниця карток справа і зліва)* (відступ між картками (10))
+  rightBlockCards.length * window.innerWidth * 0.9 -
+  leftBlockCards.length * window.innerWidth +
+  (rightBlockCards.length - leftBlockCards.length) * gap;
+
+console.log(calcOffset);
+
 let tl = gsap.timeline({
   scrollTrigger: {
     trigger: '.projects',
-    start: '100px 100px', // when the top of the trigger hits the top of the viewport
-    end: 'bottom bottom', // end after scrolling 500px beyond the start
+    start: 'top top', // when the top of the trigger hits the top of the viewport
+    end: 'bottom center', // end after scrolling 500px beyond the start
     scrub: 0.3, // smooth scrubbing, takes 1 second to "catch up" to the
     // markers: true,
+    ease: 'none',
   },
 });
-tl.fromTo('.left-block', { y: 0 }, { y: offset });
-window.addEventListener('resize', function() {
-  console.log('resizing');
+tl.fromTo('.left-block', { y: 0 }, { y: calcOffset });
+
+window.addEventListener('orientationchange', function() {
   tl.kill();
   tl = null;
   leftBlock.style.transform = '';
-  console.log(leftBlock);
+
   calcOffset =
-    window.innerHeight < window.innerWidth
-      ? 101 * 2 + 300 - 2 * 200 - 150 - 250 + 10
-      : 401 * 2 + 600 - 2 * 500 - 450 - 550 + 10;
-  offset = window.innerHeight + calcOffset;
-  // console.log(offset);
+    rightBlockCards.length * window.innerWidth * 0.9 -
+    leftBlockCards.length * window.innerWidth +
+    (rightBlockCards.length - leftBlockCards.length) * gap;
+
+  console.log(calcOffset);
   tl = gsap.timeline({
     scrollTrigger: {
       trigger: '.projects',
-      start: '100px 100px', // when the top of the trigger hits the top of the viewport
-      end: 'bottom bottom', // end after scrolling 500px beyond the start
-      scrub: 0.3, // smooth scrubbing, takes 1 second to "catch up" to the
+      start: 'top top', // when the top of the trigger hits the top of the viewport
+      end: 'bottom center', // end after scrolling 500px beyond the start
+      scrub: 0.1, // smooth scrubbing, takes 1 second to "catch up" to the
       // markers: true,
+      ease: 'none',
     },
   });
-  tl.fromTo('.left-block', { y: 0 }, { y: offset });
+  tl.fromTo('.left-block', { y: 0 }, { y: calcOffset });
 });
+
+// function heightProjectLeftSetter() {
+//   const windowWidth = window.innerWidth;
+//   const windowHeight = window.innerHeight;
+//   document.querySelectorAll(".left-block .project-card").forEach(
+//     (project, index) => project.style.height = windowWidth > windowHeight ?
+
+// )}

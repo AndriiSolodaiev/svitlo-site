@@ -1,6 +1,6 @@
 .projects {
-  padding-top: 100px;
-  padding-bottom: 10px;
+  padding-top: 8px;
+
   display: flex;
   gap: 10px;
 }
@@ -8,28 +8,23 @@
 .left-block {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   width: calc(50% - 5px);
 
   .project-card {
-    height: calc(100vh - 600px);
-
-    &:nth-child(2n -1) {
-      height: calc(100vh - 401px);
-    }
-
+    height: 100vw;
   }
 
-  @include laptop {
-    .project-card {
-      height: calc(100vh - 300px);
+  // @include laptop {
+  //   .project-card {
+  //     height: calc(100vh - 300px);
 
-      &:nth-child(2n -1) {
-        height: calc(100vh - 101px);
-      }
+  //     &:nth-child(2n -1) {
+  //       height: calc(100vh - 101px);
+  //     }
 
-    }
-  }
+  //   }
+  // }
 
 }
 
@@ -37,61 +32,55 @@
   @extend .left-block;
 
   .project-card {
-    &:nth-child(2n -1) {
-      height: calc(100vh - 500px)
-    }
-
-    // height: 800px;
-    &:nth-child(2n) {
-      height: calc(100vh - 450px);
-    }
-
-    &:last-child {
-      height: calc(100vh - 550px);
-    }
+    height: 90vw;
   }
 
+  //   &:last-child {
+  //     height: calc(100vh - 550px);
+  //   }
+
+
   @include laptop {
-    .project-card {
-      &:nth-child(2n -1) {
-        height: calc(100vh - 200px)
-      }
+    // .project-card {
+    //   &:nth-child(2n -1) {
+    //     height: calc(100vh - 200px)
+    //   }
 
-      // height: 800px;
-      &:nth-child(2n) {
-        height: calc(100vh - 150px);
-      }
+    //   // height: 800px;
+    //   &:nth-child(2n) {
+    //     height: calc(100vh - 150px);
+    //   }
 
-      &:last-child {
-        height: calc(100vh - 250px);
-      }
-    }
+    //   &:last-child {
+    //     height: calc(100vh - 250px);
+    //   }
+    // }
   }
 }
 
 .tablet.landscape {
   .left-block .project-card {
-    height: calc(100vh - 300px);
+    // height: calc(100vh - 300px);
 
-    &:nth-child(2n -1) {
-      height: calc(100vh - 101px);
-    }
+    // &:nth-child(2n -1) {
+    //   height: calc(100vh - 101px);
+    // }
 
   }
 
   .right-block .project-card {
-    &:nth-child(2n -1) {
-      height: calc(100vh - 200px)
-    }
+    // &:nth-child(2n -1) {
+    //   height: calc(100vh - 200px)
+    // }
 
-    // height: 800px;
-    &:nth-child(2n) {
-      height: calc(100vh - 150px);
-    }
+    // // height: 800px;
+    // &:nth-child(2n) {
+    //   height: calc(100vh - 150px);
+    // }
 
-    &:last-child {
-      height: calc(100vh - 250px);
-    }
+    // &:last-child {
+    //   height: calc(100vh - 250px);
+    // }
   }
 }
 
@@ -100,7 +89,7 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 1000px;
+  // height: 1000px;
 
   @include laptop {
 
@@ -148,15 +137,15 @@
       @include tablet {
         display: block;
         @include general-text;
-        color: $white-color;
+        color: $secondory-bg-color;
         margin-bottom: 10px;
       }
 
     }
 
     h2 {
-      @include title-text;
-      color: $white-color;
+      @include subtitle-text;
+      color: $secondory-bg-color;
 
     }
   }

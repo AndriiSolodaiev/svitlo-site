@@ -43,3 +43,12 @@
   font-weight: 500;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'SFProDisplay';
+  src: local('SFProDisplay SemiBold'), local('SFProDisplay-SemiBold'),
+    url('../fonts/SFProDisplay-SemiBold.woff') format('woff'),
+    url('../fonts/SFProDisplay-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}

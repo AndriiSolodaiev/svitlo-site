@@ -1,6 +1,8 @@
 .header {
+
   position: fixed;
-  top: 0;
+  bottom: 0;
+
   left: 0;
   width: 100%;
   z-index: 10000;
@@ -10,15 +12,23 @@
   @include tablet {
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: $white-color;
+    background-color: $secondory-bg-color;
     transition: background-color 0.4s linear;
 
+  }
+
+  @include laptop {
+    display: block;
+    top: 0;
+    bottom: auto;
   }
 
   .menu-is-open {
     background-color: transparent;
   }
 }
+
+
 
 .header-block {
   display: flex;
@@ -27,7 +37,7 @@
   gap: 12px;
   height: 100%;
   padding: 10px 8px;
-  background-color: $white-color ;
+  background-color: $secondory-bg-color ;
   border-radius: 12px;
 
   @include tablet {
@@ -208,7 +218,7 @@
 
   background-color: $accent-color;
   width: fit-content;
-  color: $white-color;
+  color: $secondory-bg-color;
 
   span {
     @include general-text;
@@ -278,7 +288,7 @@
 
   &__text {
     @include general-text;
-    color: $white-color;
+    color: $secondory-bg-color;
   }
 
   &__burger {
@@ -291,12 +301,12 @@
       width: 8px;
       height: 8px;
       position: relative;
-      background-color: $white-color;
+      background-color: $secondory-bg-color;
       transition: background-color 400ms linear;
 
       &::before {
         content: "";
-        background-color: $white-color;
+        background-color: $secondory-bg-color;
         display: block;
         position: absolute;
         width: 100%;
@@ -308,7 +318,7 @@
       }
 
       &::after {
-        background-color: $white-color;
+        background-color: $secondory-bg-color;
         content: "";
         display: block;
         position: absolute;
@@ -338,7 +348,7 @@
     background-color: transparent;
 
     &.square-middle {
-      background-color: $white-color;
+      background-color: $secondory-bg-color;
 
       &::before,
       &::after {
@@ -350,14 +360,14 @@
 
 .menu__container {
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  padding: 100px 4px 20px 4px;
 
-  background-color: rgba(0, 0, 0, 0.80);
+
+  background-color: rgba(0, 0, 0, 0.50);
   transition: opacity 0.4s linear;
 
   @include tablet {
@@ -371,140 +381,165 @@
 }
 
 .menu__bg {
-  background-color: $accent-color;
+  background-color: $secondory-bg-color;
   width: 100%;
-  padding: 16px 8px;
-  border-radius: 12px;
+  height: calc(100% - $header-h - 8px);
+  border-radius: 0 0 12px 12px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px 8px;
 
-  @include tablet {
-    padding: 24px 16px;
-    display: flex;
+  .menu-logo {
+    padding: 24px 0;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
 
-  }
-
-  nav {
-    @include tablet {
-      width: 50%;
-      border-right: 1px solid rgba(141, 155, 164, 0.20);
-    }
-  }
-
-  .menu__right-block {
-    @include tablet {
-      width: 50%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-  }
-
-  .nav__list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 12px;
-
-    &::after {
-      content: "";
+    svg {
       width: 100%;
-      margin-top: 12px;
-      height: 1px;
-      background-color: rgba(141, 155, 164, 0.20);
-
-      border-radius: 0.5px;
-    }
-
-    @include tablet {
-      gap: 20px;
-      // width: 50%;
-      // border-right: 1px solid rgba(141, 155, 164, 0.20);
-
-      &::after {
-        display: none
-      }
+      height: auto;
     }
   }
 
-  .nav__link {
-    span {
-      @include subtitle-text;
-      font-family: $default-font;
-      color: $white-color;
-    }
+  .accent-btn {
+    width: 100%;
+    padding: 32px 24px;
+  }
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 36px;
+}
+
+.nav__item {
+  @include menu-text;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    height: 2px;
+    width: 40vw;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 3px;
+    background: linear-gradient(90deg, rgba(247, 243, 255, 0.00) 0%, #F58614 51%, rgba(247, 243, 255, 0.00) 100%);
+
   }
 
-  .language__list {
-    @include tablet {
+  &:last-child {
+    &::after {
       display: none;
     }
   }
 
-  .footer__block-title {
-    color: $white-color;
-    opacity: 0.5;
-    margin-bottom: 8px;
-
-    @include tablet {
-      margin-bottom: 12px;
-    }
+  span {
+    text-align: center;
   }
+}
 
-  .contact-lang-wrap {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+.social-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 16px;
+}
 
+.social-item {
+  display: flex;
+  width: 64px;
+  height: 64px;
+  justify-content: center;
+  align-items: center;
+  background-color: $soft-accent;
+  border-radius: 50%;
+}
 
+.header-pc {
+  display: none;
 
-    a {
-      @include general-text;
-      color: $white-color;
-
-    }
+  @include laptop {
+    display: block;
   }
+}
 
-  .socials__list {
-    justify-content: flex-start;
+.header-mob {
+  background-color: $secondory-bg-color;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  display: flex;
+  gap: 48px;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 0;
 
-    .socials__link {
-      border-color: $white-color;
+  .mob-nav-btn {
+    border-radius: 4px;
+    transition: background-color 0.3s ease-in-out;
+    position: relative;
+
+    &::after {
+      content: "";
+      border-radius: 2px 2px 0px 0px;
+
+      width: 100%;
+      height: 4px;
+
+      position: absolute;
+      bottom: -24px;
+      left: 0;
+      transition: opacity 0.3s ease-in-out;
+      background-color: $second-accent-color;
+      opacity: 0;
+    }
+
+    svg path {
+      transition: fill 0.3s ease-in-out;
+    }
+
+    &.active {
+      background-color: $second-accent-color;
+
+      &::after {
+        opacity: 1;
+      }
 
       svg path {
-        fill: $white-color;
+        fill: $secondory-bg-color;
       }
     }
   }
 
-  .call-back {
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid $text-color;
-    margin-top: 24px;
-    height: fit-content;
-
-    span {
-      @include general-text;
-      color: $white-color
-    }
-
-    @include tablet {
-      margin-top: 40px;
-    }
+  @include laptop {
+    display: none;
   }
+}
 
-  .decor {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    transform: rotate(45deg);
-    background-color: $accent-color;
-    top: -5px;
-    right: 40px;
+.accent-btn {
+  @include general-text;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 24px;
+  background-color: $second-accent-color;
+  color: $wc;
+  font-weight: 500;
+  border-radius: 8px;
 
-    @include tablet {
-      right: 55px
-    }
+  svg path {
+    fill: $wc;
   }
 }

@@ -1,0 +1,125 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'terms'
+    var id_page = 'id-page-terms'
+    var class_page = 'class-page-terms'
+    var headerCustomClass = 'type1' 
+    var breadcrumbsSubitem = [
+      {
+        label: 'About',
+        link: pagesLink[0].about
+      }
+    ]
+
+block meta
+  title= title_page
+  meta(name='description' content='')
+block head
+  link(rel='stylesheet' href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/header.bundle.js')
+  script(defer src='./assets/scripts/footer.bundle.js')
+  script(defer src='./assets/scripts/terms.bundle.js')
+block content
+  section.sp-hero.terms-hero
+    .sp-hero-mask
+      img(src="./assets/images/single-project/hero.jpg" alt="current project") 
+    .sp-hero__btns-wrap
+      a.page-nav-btn(href="/")
+        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="20" viewBox="0 0 11 20" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5303 19.5303C10.2374 19.8232 9.76256 19.8232 9.46967 19.5303L0.469671 10.5303C0.176778 10.2374 0.176778 9.76256 0.469671 9.46967L9.46967 0.469669C9.76256 0.176777 10.2374 0.176777 10.5303 0.469669C10.8232 0.762564 10.8232 1.23744 10.5303 1.53033L2.06066 10L10.5303 18.4697C10.8232 18.7626 10.8232 19.2374 10.5303 19.5303Z" fill="white"/>
+        </svg>
+      a.page-nav-btn.right(href="/")
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="22" viewBox="0 0 16 22" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M8 1.77197C5.15729 1.77197 2.25 4.2017 2.25 7.91852C2.25 10.7004 3.38582 13.4096 4.72797 15.6293C5.93645 17.628 7.27928 19.176 8 19.9473C8.72072 19.176 10.0636 17.628 11.272 15.6293C12.6142 13.4096 13.75 10.7004 13.75 7.91852C13.75 4.2017 10.8427 1.77197 8 1.77197ZM0.75 7.91852C0.75 3.35949 4.34271 0.271973 8 0.271973C11.6573 0.271973 15.25 3.35949 15.25 7.91852C15.25 11.0882 13.9655 14.0737 12.5556 16.4054C11.1405 18.7459 9.55812 20.4948 8.87312 21.2066C8.39281 21.7057 7.60719 21.7057 7.12688 21.2066C6.44188 20.4948 4.8595 18.7459 3.44436 16.4054C2.03452 14.0737 0.75 11.0882 0.75 7.91852Z" fill="white"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M8 6.25C7.0335 6.25 6.25 7.0335 6.25 8C6.25 8.9665 7.0335 9.75 8 9.75C8.9665 9.75 9.75 8.9665 9.75 8C9.75 7.0335 8.9665 6.25 8 6.25ZM4.75 8C4.75 6.20507 6.20507 4.75 8 4.75C9.79493 4.75 11.25 6.20507 11.25 8C11.25 9.79493 9.79493 11.25 8 11.25C6.20507 11.25 4.75 9.79493 4.75 8Z" fill="white"/>
+        </svg>
+    .sp-hero__content 
+      h1 Умови придбання
+      p Ніяких здорожчань. Ні явних ні прихованих.
+      button.accent-btn(data-call-us-btn) 
+        span Записатися на перегляд
+  section.sp-infra.terms
+    .sp-infra__container
+      h2 Варіанти купівлі
+      p Ми створюємо вигідні умови, щоб зробити ваше придбання житла максимально комфортним та доступним.
+      .swiper-infra-btns
+        .swiper-wrapper 
+          .swiper-slide.active(data-terms="credit") 
+            span Розстрочка
+          .swiper-slide(data-terms="trade-in") 
+            span Trade-in
+          .swiper-slide(data-terms="full")
+            span Повна
+      .terms-container
+        .terms-content(data-terms-content="credit").is-visible
+          h3 Розстрочка
+          p Будь який із наших будинків можна придбати у розстрочку з мінімальним першим внеском. Ніяких здорожчань, прихованих платежів або комісій. Усе чено та просто.
+          ul.terms-content__list 
+            li.terms-content__item 
+              h4 Комісії
+              p 0 %
+            li.terms-content__item
+              h4 Чесної розстрочки
+              p 12 міс.
+            li.terms-content__item
+              h4 Перший платіж
+              p 30 %
+            li.terms-content__item
+              h4 Здорожчання будику
+              p 0 грн.
+
+        .terms-content(data-terms-content="trade-in")
+          h3 Trade-in
+          p За допомоги послуги trade-in, ми можемо врахувати вартість Вашої старої нерухомості як частину сплати нового будинку.
+          p Ми самі займемося продажем, рекламою та показами Вашої власності. Не важливо, це ділянка, будинок чи квартира, та який її стан. Ми можемо перетворити її у щось по-справжньому цінне.
+
+        .terms-content(data-terms-content="full")
+          h3 Повна оплата
+          p Безумовно, це кращий варіант оплати за будинок. У цьому випадку ми візьмемо на себе всі витрати з його оформлення.
+          p Будь то податки, нотаріальні послуги чи витрати зі введення будинка в експлуатацію. Всі обов'язкові витрати ми сплачуємо за Вас.
+
+  section.terms-faq 
+    ul.terms-faq__list
+      li.terms-faq__item
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 9L11.9998 17L3.99976 9L5.99976 7L11.9998 13L17.9998 7L19.9998 9Z" fill="#494A52"/>
+        </svg> 
+        h3 Чи залежить ціна будинку від суми першого внеску?
+        p На другому поверсі висота стелі сягає до 6 метрів. Що з легкістю дозволить Вам облаштувати лофтову антресоль або друге світло з повітряною люстрою над Вашою спальнею. Придумати творчу майстерню або додатковий ігровий поверх для дітей.
+      li.terms-faq__item
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 9L11.9998 17L3.99976 9L5.99976 7L11.9998 13L17.9998 7L19.9998 9Z" fill="#494A52"/>
+        </svg> 
+        h3 Що, якщо до завершення розстрочки будинок подорожчкає?
+        p На другому поверсі висота стелі сягає до 6 метрів. Що з легкістю дозволить Вам облаштувати лофтову антресоль або друге світло з повітряною люстрою над Вашою спальнею. Придумати творчу майстерню або додатковий ігровий поверх для дітей.
+      li.terms-faq__item 
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 9L11.9998 17L3.99976 9L5.99976 7L11.9998 13L17.9998 7L19.9998 9Z" fill="#494A52"/>
+        </svg>
+        h3 Які документи  взяти для придбання будинка?
+        p На другому поверсі висота стелі сягає до 6 метрів. Що з легкістю дозволить Вам облаштувати лофтову антресоль або друге світло з повітряною люстрою над Вашою спальнею. Придумати творчу майстерню або додатковий ігровий поверх для дітей.
+      li.terms-faq__item 
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 9L11.9998 17L3.99976 9L5.99976 7L11.9998 13L17.9998 7L19.9998 9Z" fill="#494A52"/>
+        </svg>
+        h3 Чи є можливість дострокового погашення?
+        p На другому поверсі висота стелі сягає до 6 метрів. Що з легкістю дозволить Вам облаштувати лофтову антресоль або друге світло з повітряною люстрою над Вашою спальнею. Придумати творчу майстерню або додатковий ігровий поверх для дітей.
+      li.terms-faq__item 
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9998 9L11.9998 17L3.99976 9L5.99976 7L11.9998 13L17.9998 7L19.9998 9Z" fill="#494A52"/>
+        </svg>
+        h3 Як придбати будинок on-line?
+        p На другому поверсі висота стелі сягає до 6 метрів. Що з легкістю дозволить Вам облаштувати лофтову антресоль або друге світло з повітряною люстрою над Вашою спальнею. Придумати творчу майстерню або додатковий ігровий поверх для дітей.
+
+
+
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug

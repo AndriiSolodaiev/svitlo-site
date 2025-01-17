@@ -1,10 +1,5 @@
-import Swiper, { Autoplay, EffectFade } from 'swiper';
-import { Navigation } from 'swiper';
-import 'swiper/css';
-import 'swiper/css/effect-fade';
 import { gsap, ScrollTrigger, CustomEase } from 'gsap/all';
 import device from 'current-device';
-// import '../modules/helpers/imgParallax';
 
 import { initSmoothScrolling } from '../modules/scroll/leniscroll';
 
@@ -57,11 +52,3 @@ window.addEventListener('orientationchange', function() {
   });
   tl.fromTo('.left-block', { y: 0 }, { y: calcOffset });
 });
-
-// function heightProjectLeftSetter() {
-//   const windowWidth = window.innerWidth;
-//   const windowHeight = window.innerHeight;
-//   document.querySelectorAll(".left-block .project-card").forEach(
-//     (project, index) => project.style.height = windowWidth > windowHeight ?
-
-// )}

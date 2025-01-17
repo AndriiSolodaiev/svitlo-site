@@ -11,7 +11,7 @@ $bc: #000;
 $bc2: #000;
 
 $text-color: #808086;
-$bg-color: rgb(245, 245, 245);
+$bg-color: #f5f5f5;
 $bg-color-mob: #E6E6E6;
 $secondory-bg-color: rgba(255, 255, 255, 1);
 $light-gray-color: #A4A4A8;
@@ -20,7 +20,13 @@ $dark-color: rgba(29, 29, 31, 1);
 $second-accent-color: #F58614;
 $accent-color: #494a52;
 $header-h: 96px;
+$offset: 8px;
 $soft-accent: #FFF8F0;
+$border-radius-btn: 6px;
+$border-radius-md: 8px;
+$border-radius-block: 12px;
+$btn-size: 56px;
+
 
 
 @mixin title-text () {
@@ -42,6 +48,28 @@ $soft-accent: #FFF8F0;
 
 	@include desktop {
 		font-size: 96px;
+	}
+}
+
+@mixin block-info-text () {
+
+	font-family: $default-font2;
+	font-size: 44px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 90%;
+	color: $accent-color;
+
+	@include tablet {
+		font-size: 30px;
+	}
+
+	@include laptop {
+		font-size: 45px;
+	}
+
+	@include desktop {
+		font-size: 60px;
 	}
 }
 
@@ -99,6 +127,20 @@ $soft-accent: #FFF8F0;
 	}
 }
 
+@mixin subgeneral-text() {
+
+	font-family: $default-font2;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	line-height: 120%;
+
+	@include desktop {
+		font-size: 20px;
+	}
+}
+
 @mixin general-text() {
 
 	font-family: $default-font2;
@@ -106,7 +148,7 @@ $soft-accent: #FFF8F0;
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
-
+	line-height: 120%;
 
 	@include desktop {
 		font-size: 18px;

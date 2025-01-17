@@ -1,36 +1,51 @@
-import Swiper,{Navigation} from "swiper"
-import 'swiper/css';
-import { initSmoothScrolling } from '../modules/scroll/leniscroll';
+import Swiper, { Pagination } from 'swiper';
+import { gsap, ScrollTrigger, CustomEase } from 'gsap/all';
 
-initSmoothScrolling();
-// const swiper = new Swiper ('.swiper-hero', {
-  
-//   modules: [Navigation],
-//   speed: 700,
- 
-// //  centeredSlidesBounds: true,
+import googleMap from '../modules/map/map';
+import device from 'current-device';
+// if (device.iphone()) {
+//   document.querySelector('html').style.overscrollBehavior = 'none';
+// }
+googleMap();
 
-// loop: true,
+gsap.registerPlugin(ScrollTrigger, CustomEase);
 
-//   breakpoints: {
-//     // when window width is >= 320px
-//     // 360: {
-//     //   slidesPerView: 1.1,
-//     //   spaceBetween: 8,
-//     // },
-//     // // when window width is >= 480px
-//     // 768: {
-//     //   slidesPerView: 1.3,
-//     //   spaceBetween: 20,
-//     // },
-//     1366: {
-//       // spaceBetween: 20,
-//       // slidesPerView: 4,
-//     },
-//   },
-//   navigation: {
-//     prevEl: '.swiper-button-prev',
-//     nextEl: '.swiper-button-next',
-//   },
+const swiperLocation = new Swiper('.swiper-location', {
+  speed: 1000,
+  slidesPerView: 1.1,
+  spaceBetween: 8,
+});
 
-// })
+const swiperTypes = new Swiper('.swiper-types', {
+  speed: 1000,
+  slidesPerView: 1.1,
+  spaceBetween: 8,
+});
+
+const swiperInfra = new Swiper('.swiper-infra-btns', {
+  speed: 1000,
+  slidesPerView: 'auto',
+  spaceBetween: 8,
+});
+
+const swiperMaterials = new Swiper('.swiper-materials-btns', {
+  speed: 1000,
+  slidesPerView: 'auto',
+  spaceBetween: 8,
+});
+
+const swiperGallery = new Swiper('.swiper-gallery', {
+  modules: [Pagination],
+  speed: 1000,
+  spaceBetween: 8,
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+});
+
+const swiperOther = new Swiper('.swiper-other', {
+  speed: 1000,
+  spaceBetween: 8,
+  slidesPerView: 1.1,
+});

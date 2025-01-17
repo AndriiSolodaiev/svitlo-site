@@ -10,6 +10,7 @@ window.addEventListener('scroll', function headerSquosh() {
 });
 
 document.body.addEventListener('click', function(evt) {
+  const faq = evt.target.closest('.terms-faq__item');
   const close = evt.target.closest('[data-call-us-modal-close]');
   // const form = evt.target.closest('[data-call-us-modal]');
   const btn = evt.target.closest('[data-call-us-btn]');
@@ -96,6 +97,10 @@ document.body.addEventListener('click', function(evt) {
     window.dispatchEvent(new Event('start-scroll'));
     overflowPhone.classList.add('hidden');
     headerControls('home');
+  }
+
+  if (faq) {
+    faq.classList.toggle('is-open');
   }
 });
 

@@ -365,3 +365,13 @@
     height: auto;
   }
 }
+
+.desktop {
+  .close-btn {
+
+    &:hover,
+    &:focus {
+      background-color: $accent-color-hover ;
+    }
+  }
+}

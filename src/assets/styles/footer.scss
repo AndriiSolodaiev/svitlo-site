@@ -146,9 +146,13 @@
 
     &.middle-block {
       display: flex;
-      justify-content: space-between;
 
-      width: 60%;
+      @include laptop {
+        justify-content: space-between;
+
+        width: 60%;
+      }
+
 
       &>div {
         flex: 1;
@@ -270,6 +274,31 @@
         height: 24px;
       }
 
+    }
+  }
+}
+
+.desktop {
+  .footer__block-wrap {
+    a {
+      &:not(.social-item) {
+        transition: color 0.35s ease-in-out;
+      }
+
+      &:hover,
+      &:focus {
+        color: $second-accent-color;
+      }
+    }
+  }
+
+  .up-btn {
+    transition: background-color 0.35s ease-in-out;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $soft-accent-hover;
     }
   }
 }

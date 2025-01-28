@@ -1,28 +1,28 @@
 extends ../layout/main
 block variable
-    -
-        var headerCustomClass = 'type1' 
+  -
+    var headerCustomClass = 'type1' 
 block meta
-    title= '404'
-    meta(name='description' content='')
+  title= '404'
+  meta(name='description' content='')
 
 block head
-    link(rel='stylesheet' href="./assets/styles/main.min.css")
+  link(rel='stylesheet' href="./assets/styles/main.min.css")
 
 block scripts
-    script(defer src='./assets/scripts/vendors.bundle.js')
-    script(defer src='./assets/scripts/header.bundle.js')
-    script(defer src='./assets/scripts/footer.bundle.js')
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/header.bundle.js')
+  //- script(defer src='./assets/scripts/footer.bundle.js')
 
 block content
-    section.notFound
-        .notFound-bg
-            img(src="./assets/images/404.jpg" alt="beautiful houses")
-            .notFound__text
-                p 404
-                h1 Ця сторінка відсутня. Давайте допоможемо вам повернутися на потрібний шлях!
-                a.accent-btn(href="/") 
-                    span Повернутись на головну
+  section.notFound
+    .notFound-bg
+      img(src="./assets/images/404.jpg" alt="beautiful houses")
+      .notFound__text
+        p 404
+        h1 Ця сторінка відсутня. Давайте допоможемо вам повернутися на потрібний шлях!
+        a.accent-btn(href="/") 
+          span Повернутись на головну
 
 
 
@@ -32,5 +32,5 @@ block content
 //-     include ../includes/footer.pug
 
 block header
-    include ../includes/header.pug
+  include ../includes/header.pug
 

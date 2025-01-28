@@ -9,6 +9,12 @@ const swiperAchievements = new Swiper('.swiper-achievements', {
   speed: 1000,
   slidesPerView: 1.1,
   spaceBetween: 8,
+  breakpoints: {
+    768: {
+      slidesPerView: 3,
+      enabled: false,
+    },
+  },
 });
 const swiperGallery = new Swiper('.swiper-gallery', {
   modules: [Pagination, EffectFade],

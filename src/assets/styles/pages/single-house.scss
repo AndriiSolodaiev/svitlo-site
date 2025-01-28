@@ -242,10 +242,12 @@
 }
 
 .sp-gallery.sh-gallery-pc {
+  @extend .swiper-gallery;
   display: none;
 
   @include laptop {
     display: block;
     padding-bottom: 0;
+
   }
 }

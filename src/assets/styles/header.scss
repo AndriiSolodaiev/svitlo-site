@@ -343,7 +343,7 @@ $cubic: cubic-bezier(0, .99, .48, .99);
     gap: var(--offset);
     width: fit-content;
     transition: transform $time $cubic, transform $time $cubic;
-    padding-right: calc(4.16vw);
+    padding-right: calc(4.16vw - var(--offset));
     transform: translateX(100%);
 
     .header-link {
@@ -723,6 +723,10 @@ $cubic: cubic-bezier(0, .99, .48, .99);
   white-space: nowrap;
   transition: background-color 0.35s ease-in-out;
 
+  &:active {
+    background-color: $btn-active;
+  }
+
   @include laptop {
 
     &:hover,
@@ -730,12 +734,68 @@ $cubic: cubic-bezier(0, .99, .48, .99);
       background-color: $btn-hover;
     }
 
-    &:active {
-      background-color: $btn-active;
-    }
+
   }
 
   svg path {
     fill: $wc;
+  }
+}
+
+.desktop {
+  .header-btn {
+
+
+    &:hover,
+    &:focus {
+      transition: background-color 0.35s ease-in-out;
+      background-color: $btn-hover;
+    }
+
+  }
+
+  .header-link {
+    transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+
+    &:hover,
+    &:focus {
+      background-color: $soft-accent-hover;
+    }
+
+    &.accent-btn {
+
+      &:hover,
+      &:focus {
+        background-color: $btn-hover;
+      }
+    }
+  }
+
+  // .header-btns-list.is-open {
+  //   .header-btn {
+  //     background-color: $soft-accent;
+
+  //     &:hover,
+  //     &:focus {
+  //       background-color: $soft-accent-hover;
+  //     }
+  //   }
+  // }
+
+  .social-item {
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $soft-accent-hover;
+    }
+  }
+
+  .accent-btn {
+
+    &:hover,
+    &:focus {
+      background-color: $btn-hover;
+    }
   }
 }

@@ -379,6 +379,8 @@
 
     @include laptop {
       flex: 1;
+      box-shadow: 5px -15px 10px 0px rgba(153, 153, 153, 0.05), 2px -7px 7px 0px rgba(153, 153, 153, 0.09), 1px -2px 4px 0px rgba(153, 153, 153, 0.10), 14px -43px 13px 0px rgba(153, 153, 153, 0.00), -9px 27px 12px 0px rgba(153, 153, 153, 0.01), -5px 15px 10px 0px rgba(153, 153, 153, 0.05), -2px 7px 7px 0px rgba(153, 153, 153, 0.09), -1px 2px 4px 0px rgba(153, 153, 153, 0.10);
+
     }
 
     img {
@@ -997,6 +999,17 @@
         }
       }
 
+    }
+  }
+}
+
+.desktop {
+  .page-nav-btn {
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $accent-color-hover;
     }
   }
 }

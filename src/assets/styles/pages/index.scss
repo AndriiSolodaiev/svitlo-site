@@ -128,3 +128,19 @@
   }
 
 }
+
+.desktop {
+  .project-card {
+
+    &:hover,
+    &:focus {
+      .project-card__mask {
+        opacity: 1;
+      }
+
+      img {
+        transform: scale(1.1);
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import Swiper, { Pagination } from 'swiper';
+import Swiper, { EffectFade, Pagination } from 'swiper';
 import { gsap, ScrollTrigger, CustomEase } from 'gsap/all';
 import device from 'current-device';
 import { initSmoothScrolling } from '../modules/scroll/leniscroll';
@@ -7,7 +7,8 @@ initSmoothScrolling();
 gsap.registerPlugin(ScrollTrigger, CustomEase);
 
 const swiperGallery = new Swiper('.swiper-gallery', {
-  modules: [Pagination],
+  modules: [Pagination, EffectFade],
+  effect: 'fade',
   speed: 1000,
   spaceBetween: 8,
   slidesPerView: 1,
@@ -22,13 +23,15 @@ const swiperGallery = new Swiper('.swiper-gallery', {
   },
 });
 const swiperGalleryPc = new Swiper('.swiper-gallery-pc', {
-  modules: [Pagination],
+  modules: [Pagination, EffectFade],
+  effect: 'fade',
   speed: 1000,
   spaceBetween: 8,
   slidesPerView: 1,
+  enabled: false,
   breakpoints: {
     1366: {
-      enabled: false,
+      enabled: true,
     },
   },
   pagination: {
@@ -43,6 +46,7 @@ const swiperAchievements = new Swiper('.swiper-achievements', {
   breakpoints: {
     768: {
       slidesPerView: 3,
+      enabled: false,
     },
     1366: {},
   },

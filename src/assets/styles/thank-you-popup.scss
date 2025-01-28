@@ -21,7 +21,7 @@
 
   &__text {
     width: calc(100% - 16px);
-    padding: 24px 15px;
+    padding: 24px 16px;
     background-color: $bg-color;
     border-radius: 20px;
     display: flex;
@@ -33,13 +33,14 @@
     left: 50%;
     transform: translateX(-50%);
 
-    @include tablet {
-      padding: 28px 40px;
-      width: fit-content;
-    }
+    @include tablet {}
 
-    @include desktop {
-      padding: 40px 40px;
+    @include laptop {
+      width: 700px;
+      height: 400px;
+      padding: 24px;
+      bottom: 50%;
+      transform: translate(-50%, 50%);
     }
 
     svg {
@@ -51,15 +52,18 @@
 
     @include tablet {
       padding: 20px 40px;
+
+      svg {
+        width: 125px;
+        height: 100px;
+        margin-bottom: 30px;
+      }
     }
 
     @include laptop {
       padding: 40px 40px;
 
-      svg {
-        width: 70px;
-        height: 70px;
-      }
+
     }
   }
 
@@ -75,6 +79,10 @@
     color: $text-color;
     width: 100%;
     text-align: center;
+
+    @include tablet {
+      max-width: 550px;
+    }
   }
 
   & .thank-you-popup__btn {

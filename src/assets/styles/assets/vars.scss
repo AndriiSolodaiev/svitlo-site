@@ -1,6 +1,16 @@
 $default-font: 'Montserrat', sans-serif;
 $default-font2: 'SFProDisplay', sans-serif;
 
+:root {
+	--offset: 8px; // Задаємо базове значення змінної
+}
+
+@media screen and (min-width: 1366px) {
+	:root {
+		--offset: 10px; // Перевизначаємо змінну для великих екранів
+	}
+}
+
 $mc2: #ff554c;
 $mc3: #e5df06;
 $mc4: #4f90b6;
@@ -19,13 +29,18 @@ $middle-gray-color: #f1f1f3;
 $dark-color: rgba(29, 29, 31, 1);
 $second-accent-color: #F58614;
 $accent-color: #494a52;
+$accent-color-hover: #5A5B66;
+$btn-hover: #E57300;
+$btn-active: #D46300;
 $header-h: 96px;
-$offset: 8px;
+
 $soft-accent: #FFF8F0;
+$soft-accent-hover: #FFF1E0;
 $border-radius-btn: 6px;
 $border-radius-md: 8px;
 $border-radius-block: 12px;
 $btn-size: 56px;
+
 
 
 
@@ -39,16 +54,16 @@ $btn-size: 56px;
 	color: $secondory-bg-color;
 
 	@include tablet {
-		font-size: 48px;
+		font-size: 100px;
 	}
 
 	@include laptop {
-		font-size: 72px;
+		font-size: 4.6vw;
 	}
 
-	@include desktop {
-		font-size: 96px;
-	}
+	// @include desktop {
+	// 	font-size: 96px;
+	// }
 }
 
 @mixin block-info-text () {
@@ -61,16 +76,14 @@ $btn-size: 56px;
 	color: $accent-color;
 
 	@include tablet {
-		font-size: 30px;
+		font-size: 54px;
 	}
 
 	@include laptop {
-		font-size: 45px;
+		font-size: 2.92vw;
 	}
 
-	@include desktop {
-		font-size: 60px;
-	}
+
 }
 
 @mixin subtitle-text () {
@@ -83,34 +96,14 @@ $btn-size: 56px;
 	color: $secondory-bg-color;
 
 	@include tablet {
-		font-size: 30px;
+		font-size: 64px;
 	}
 
 	@include laptop {
-		font-size: 45px;
+		font-size: 4.6vw;
 	}
 
-	@include desktop {
-		font-size: 60px;
-	}
-}
 
-
-
-
-@mixin block-title() {
-
-	font-family: $default-font2;
-	font-size: 28px;
-	font-style: normal;
-	font-weight: 600;
-	line-height: normal;
-	color: $accent-color;
-
-
-	@include desktop {
-		font-size: 38px;
-	}
 }
 
 @mixin menu-text() {
@@ -122,13 +115,17 @@ $btn-size: 56px;
 	line-height: 120%;
 	color: $accent-color;
 
-	@include desktop {
-		font-size: 18px;
+	@include tablet {
+		font-size: 32px;
 	}
+
+	@include laptop {
+		font-size: 1.875vw;
+	}
+
 }
 
 @mixin subgeneral-text() {
-
 	font-family: $default-font2;
 	font-size: 18px;
 	font-style: normal;
@@ -136,8 +133,12 @@ $btn-size: 56px;
 	line-height: normal;
 	line-height: 120%;
 
-	@include desktop {
+	@include tablet {
 		font-size: 20px;
+	}
+
+	@include laptop {
+		font-size: 1.25vw;
 	}
 }
 
@@ -146,22 +147,32 @@ $btn-size: 56px;
 	font-family: $default-font2;
 	font-size: 16px;
 	font-style: normal;
-	font-weight: 400;
+	font-weight: 500;
 	line-height: normal;
 	line-height: 120%;
 
-	@include desktop {
+	@include tablet {
 		font-size: 18px;
 	}
+
+
 }
 
 
 
 @mixin tiny-text() {
 	color: $secondory-bg-color;
-	font-family: $default-font;
+	font-family: $default-font2;
 	font-size: 12px;
 	font-style: normal;
 	font-weight: 500;
 	line-height: normal;
+
+	@include tablet {
+		font-size: 14px;
+	}
+
+	@include tablet {
+		font-size: 16px;
+	}
 }

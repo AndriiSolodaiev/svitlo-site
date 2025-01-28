@@ -6,18 +6,19 @@
   left: 0;
   width: 100%;
   z-index: 10000;
-  padding-top: 4px;
+
   // padding-bottom: 10px;
 
-  @include tablet {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: $secondory-bg-color;
-    transition: background-color 0.4s linear;
+  // @include tablet {
+  //   padding-top: 10px;
+  //   padding-bottom: 10px;
+  //   background-color: $secondory-bg-color;
+  //   transition: background-color 0.4s linear;
 
-  }
+  // }
 
   @include laptop {
+    pointer-events: none;
     display: block;
     top: 0;
     bottom: auto;
@@ -61,6 +62,10 @@
 
   @include tablet {
     gap: 10px;
+  }
+
+  @include laptop {
+    height: auto;
   }
 
   .header__logo-wrap {
@@ -274,10 +279,152 @@
       flex: 1;
     }
   }
-
 }
 
-.menu-btn {
+$time: 1s;
+$cubic: cubic-bezier(0, .99, .48, .99);
+
+.header-pc {
+  position: static;
+  pointer-events: none;
+  width: calc(100% - var(--offset)*3);
+  margin-right: auto;
+  margin-left: 0;
+  padding-top: calc(var(--offset)*2);
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+
+  &>* {
+    pointer-events: all;
+  }
+
+  .header-btn {
+    position: absolute;
+    cursor: pointer;
+    z-index: 2;
+
+    right: calc(var(--offset)*2);
+    width: 4.166vw;
+    height: 4.166vw;
+    border-radius: 12px;
+    background-color: $second-accent-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color $time $cubic;
+
+    @include laptop {
+
+      &:hover,
+      &:focus {
+        transition: background-color 0.35s ease-in-out;
+        background-color: $btn-hover;
+      }
+
+    }
+
+    svg {
+      width: 1.66vw;
+      height: 1.66vw;
+      transition: transform $time $cubic;
+
+      path {
+        transition: fill $time $cubic;
+      }
+
+    }
+  }
+
+  .header-btns-list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--offset);
+    width: fit-content;
+    transition: transform $time $cubic, transform $time $cubic;
+    padding-right: calc(4.16vw);
+    transform: translateX(100%);
+
+    .header-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      height: 4.166vw;
+      border-radius: 12px;
+      width: 200px;
+      background-color: $soft-accent;
+
+      transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+
+      @include laptop {
+
+        &:hover,
+        &:focus {
+          background-color: $soft-accent-hover;
+
+          // span {
+          //   color: $wc;
+          // }
+        }
+
+        &.accent-btn {
+
+          &:hover,
+          &:focus {
+            background-color: $btn-hover;
+
+
+          }
+        }
+      }
+
+      &.accent-btn {
+        background-color: $second-accent-color;
+
+        span {
+          color: $wc;
+        }
+      }
+
+      span {
+        @include general-text;
+        color: $accent-color;
+        transition: color 0.35s ease-in-out;
+      }
+    }
+  }
+
+  &.is-open {
+    .header-btn {
+      background-color: $soft-accent;
+
+      @include laptop {
+
+        &:hover,
+        &:focus {
+          background-color: $soft-accent-hover;
+        }
+      }
+
+      svg {
+        transform: rotate(-180deg);
+
+        path {
+          fill: $second-accent-color;
+        }
+      }
+    }
+
+    .header-btns-list {
+      transform: translateX(0%);
+
+    }
+  }
+}
+
+.header-pc .menu-btn {
   background-color: $accent-color;
   display: flex;
   flex-direction: column;
@@ -365,18 +512,18 @@
   left: 0;
   width: 100%;
   height: 100%;
-
-
   background-color: rgba(0, 0, 0, 0.50);
-  transition: opacity 0.4s linear;
+  transition: opacity 0.4s ease-in-out 0.1s, transform 0.5s ease-in-out;
 
-  @include tablet {
-    padding: 100px 8px 20px 8px;
-  }
+
 
   &.hidden {
     opacity: 0;
     pointer-events: none;
+
+    transform: translate(0%, -10%) scale(1.05);
+
+
   }
 }
 
@@ -407,6 +554,31 @@
   .accent-btn {
     width: 100%;
     padding: 32px 24px;
+  }
+
+  .menu__close-btn {
+    @include tiny-text;
+    position: absolute;
+    bottom: 110px;
+    padding: 24px 24px 0;
+    left: 50%;
+    color: $second-accent-color;
+    text-decoration: underline;
+    transform: translateX(-50%);
+    font-weight: 600;
+    font-size: 14px;
+
+    @include tablet {
+      font-size: 16px;
+    }
+
+  }
+}
+
+.tablet.landscape {
+  .menu__bg .menu-logo {
+
+    width: 20%;
   }
 }
 
@@ -465,13 +637,23 @@
   align-items: center;
   background-color: $soft-accent;
   border-radius: 50%;
+  transition: background-color 0.35s ease-in-out;
+
+  @include laptop {
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $soft-accent-hover;
+    }
+  }
 }
 
 .header-pc {
   display: none;
 
   @include laptop {
-    display: block;
+    display: flex;
   }
 }
 
@@ -538,6 +720,20 @@
   color: $wc;
   font-weight: 500;
   border-radius: 8px;
+  white-space: nowrap;
+  transition: background-color 0.35s ease-in-out;
+
+  @include laptop {
+
+    &:hover,
+    &:focus {
+      background-color: $btn-hover;
+    }
+
+    &:active {
+      background-color: $btn-active;
+    }
+  }
 
   svg path {
     fill: $wc;

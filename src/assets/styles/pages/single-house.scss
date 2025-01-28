@@ -1,20 +1,34 @@
 .sh-hero {
+  position: relative;
+
   .page-nav-btn {
     position: absolute;
     z-index: 2;
-    top: $offset;
-    left: $offset;
+    top: var(--offset);
+    left: var(--offset);
   }
 
   .swiper-gallery {
     .swiper-pagination {
       top: auto;
       bottom: 24px;
+
+      @include laptop {
+        display: none;
+      }
     }
 
     .swiper-slide {
       padding-bottom: 107%;
       height: auto;
+
+      @include tablet {
+        padding-bottom: calc(100vh - $header-h - var(--offset)*2);
+      }
+
+      @include laptop {
+        padding-bottom: calc(100vh - var(--offset)*2);
+      }
 
       img {
         position: absolute;
@@ -25,13 +39,24 @@
         object-fit: cover;
       }
     }
+
+    .sp-hero__info-wrap {
+
+      @include laptop {
+        .sp-parameters__gen-block svg path {
+          fill: none;
+        }
+
+        z-index: 3;
+      }
+    }
   }
 
   .sh-hero__title-block {
     border-radius: $border-radius-block;
     background-color: $wc;
     padding: 24px 16px;
-    margin: $offset 0;
+    margin: var(--offset) 0;
 
     h1 {
       @include subtitle-text;
@@ -43,37 +68,98 @@
       @include general-text;
       color: $text-color;
     }
+
+    @include laptop {
+      position: absolute;
+      z-index: 3;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: transparent;
+
+
+      h1,
+      p {
+        text-align: center;
+        color: $wc;
+      }
+
+      h1 {
+        font-size: 4.68vw;
+      }
+
+      p {
+        font-size: 1.25vw;
+      }
+    }
   }
 }
 
 .sh-plannings {
-  padding: 0 4px $offset;
+  padding: 0 4px var(--offset);
+
+  @include laptop {
+    padding: 0 var(--offset) var(--offset);
+
+    .swiper-materials-btns {
+      position: static;
+      margin-bottom: 0;
+
+      .swiper-slide {
+        flex-direction: column;
+      }
+    }
+
+    .sh-plannings-content {
+      margin: 0;
+
+      .sh-plannings__img-wrap {
+        border: 1px solid var(--backgroung, #EFEBEB);
+        background-color: transparent;
+      }
+    }
+  }
+
 
   &__container {
-    padding: 24px $offset $offset;
+    padding: 24px var(--offset) var(--offset);
     background-color: $wc;
     border-radius: $border-radius-block;
     overflow: hidden;
     width: 100%;
-    height: calc(100% - $offset - $header-h );
+    // height: calc(100vh - var(--offset) - $header-h );
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    @include laptop {
+      padding: var(--offset);
+      height: calc(100vh - var(--offset));
+    }
 
     &>h2 {
       @include subtitle-text;
       color: $accent-color;
       margin-bottom: 16px;
-      padding-left: $offset;
+      padding-left: var(--offset);
+
+      @include laptop {
+        display: none
+      }
     }
 
     &>p {
       @include general-text;
       color: $text-color;
       margin-bottom: 24px;
-      padding-left: $offset;
+      padding-left: var(--offset);
+
+      @include laptop {
+        display: none
+      }
     }
 
   }
-
-
 
   .swiper-materials-btns .swiper-slide {
     &>p {
@@ -94,7 +180,10 @@
 
   &-content {
     margin-top: 24px;
-
+    display: flex;
+    flex-direction: column;
+    /* Для вертикального розташування дітей */
+    flex: 1 1 auto;
 
   }
 
@@ -106,24 +195,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    flex: 1 1 auto;
 
     img {
-      width: 100%;
+      width: auto;
       height: auto;
       border-radius: $border-radius-md;
       object-fit: contain;
       height: 50vh;
+
+      @include laptop {
+        height: 70vh;
+      }
     }
   }
 
   &__floors {
     background-color: $second-accent-color;
-    padding: $offset;
+    padding: var(--offset);
     border-radius: $border-radius-md;
     display: flex;
     align-items: center;
-    gap: $offset;
+    gap: var(--offset);
 
     &-btn {
       flex: 1;
@@ -145,5 +238,14 @@
         background-color: rgb(246, 146, 43);
       }
     }
+  }
+}
+
+.sp-gallery.sh-gallery-pc {
+  display: none;
+
+  @include laptop {
+    display: block;
+    padding-bottom: 0;
   }
 }

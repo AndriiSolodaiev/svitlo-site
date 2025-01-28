@@ -1,6 +1,8 @@
 import Swiper, { Pagination } from 'swiper';
 import { gsap, ScrollTrigger, CustomEase } from 'gsap/all';
 import device from 'current-device';
+import { initSmoothScrolling } from '../modules/scroll/leniscroll';
+initSmoothScrolling();
 
 gsap.registerPlugin(ScrollTrigger, CustomEase);
 

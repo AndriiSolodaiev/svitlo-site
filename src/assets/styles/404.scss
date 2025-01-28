@@ -1,52 +1,105 @@
 .notFound {
-    height:100vh;
-   
+    height: calc(100vh - $header-h - var(--offset));
+    padding: var(--offset) 4px;
+
+    @include laptop {
+        height: 100vh;
+        padding: var(--offset);
+    }
+
 }
 
 .notFound-bg {
 
-    background-size: cover;
-    padding-top: 100px;
-    height:100%;
+
+    padding: 120px var(--offset) var(--offset);
+    height: 100%;
     width: 100%;
-    background-image: url('../images/home/hero-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+    border-radius: $border-radius-block;
 
-    @include tablet {
-        padding-top: 200px;
-    }
 
-    @include laptop {
-        display: flex;
-        flex-direction: row-reverse;
-        
+
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.21) 30%, rgba(0, 0, 0, 0.70) 100%);
+
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
         height: 100%;
-        padding-top: 130px;
+        object-fit: cover;
+        z-index: -1;
     }
 
-    @include desktop {
-        padding-top: 200px;
+    .notFound__text {
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+        gap: 8px;
+        height: 100%;
+
+        p {
+            @include title-text;
+            font-size: 140px;
+            color: $wc;
+        }
+
+        h1 {
+            @include general-text;
+            color: $wc;
+            text-align: center;
+        }
+
+        .accent-btn {
+            padding: 32px 24px;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        ;
+
+
+        @include tablet {
+
+            gap: 24px;
+
+            p {
+
+                font-size: 160px;
+            }
+
+            h1 {
+                max-width: 526px;
+                font-size: 20px;
+
+            }
+
+            .accent-btn {
+                padding: 16px 24px;
+                margin-top: 0;
+                width: fit-content;
+            }
+        }
+
+        @include laptop {
+
+            gap: 30px;
+
+            p {
+
+                font-size: 10.4vw;
+
+            }
+
+            h1 {
+                max-width: 588px;
+                font-size: 24px;
+            }
+
+        }
     }
-}
-
-.notFound__text {
-    
 
 }
-
-.notFound__title {
- 
-
-}
-
-.notFound-links__wrap {
-    
-}
-
-.notFound-img-wraper {
-    
-}
-
-

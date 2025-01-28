@@ -8,7 +8,12 @@
 // });
 
 import { contactFormFooter } from './contactFormFooter';
-
+document.querySelector('.up-btn').addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+});
 const footer = document.querySelector('footer');
 
 const initFooter = () => {

@@ -27,7 +27,7 @@
   width: calc(100% - 8px);
   background: $secondory-bg-color;
   border: none;
-  transition: transform 0.3s ease-in-out 0.3s, opacity 0.3s ease 0.3s;
+  transition: transform 0.5s ease-in-out, opacity 0.4s ease 0.1s;
   opacity: 1;
   padding: 24px 8px 8px;
 
@@ -38,19 +38,30 @@
   }
 
   .hidden & {
-    transform: translate(-50%, -50%) scale(1.2);
+    transform: translate(-50%, -50%) scale(1.05);
     opacity: 0;
   }
 
-  @include tablet {
-    padding: 30px;
-    width: 442px;
+  // @include tablet {
+  //   padding: 30px;
+  //   width: 442px;
 
+  // }
+  @include tablet {
+    padding: 24px;
   }
 
-  @include desktop {
-    padding: 40px;
-    width: 626px;
+  @include laptop {
+
+    width: 700px;
+    height: 400px;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
   }
 
   h3 {
@@ -58,6 +69,10 @@
     text-align: center;
     margin-bottom: 30px;
     color: $accent-color;
+
+    @include laptop {
+      font-size: 2.91vw;
+    }
   }
 
 }
@@ -91,29 +106,34 @@
 }
 
 .close-btn {
-  position: absolute;
-  // border-radius: 50%;
-  // background-color: $light-color;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  top: 20px;
-  right: 20px;
+  display: none;
 
-
-  svg {
-    width: 14px;
-    height: 14px;
-  }
-
-  // @include tablet {
-  //   top: 20px;
-  //   right: 20px;
-  // }
   @include laptop {
-    // top: 30px;
-    // right: 30px;
+    position: absolute;
+    // border-radius: 50%;
+    // background-color: $light-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+    width: $btn-size;
+    height: $btn-size;
+    transform: translate(100%, -100%);
+    border-radius: 12px;
+    background-color: $accent-color;
+    transition: background-color 0.35s ease-in-out;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $accent-color-hover ;
+    }
   }
 
   @include desktop {
@@ -172,7 +192,10 @@
   width: 100%;
   margin-bottom: 30px;
 
-  @include tablet {}
+  @include tablet {
+    flex-direction: row;
+    gap: var(--offset);
+  }
 
   @include laptop {}
 
@@ -196,6 +219,10 @@
 
 .form-field {
   position: relative;
+
+  @include tablet {
+    flex: 1;
+  }
 }
 
 .input-message {
@@ -216,7 +243,7 @@
   border: none;
   border-radius: 8px;
   background-color: $soft-accent;
-
+  transition: background-color 0.35s ease-in-out;
 
 
   &::placeholder {
@@ -224,14 +251,12 @@
     color: $light-gray-color;
   }
 
-  // &:focus {
-  //   outline: 1px solid $text-color
-  // }
+  &:focus {
+    // outline: 1px solid $second-accent-color
+    background-color: $soft-accent-hover;
+  }
 
-  // @include tablet {
 
-  //   padding: 13px 20px;
-  // }
 
   // @include laptop {}
 
@@ -267,34 +292,33 @@
 }
 
 .form__button-wrapper {
+  display: flex;
+  justify-content: center;
 
   .form__button {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid $text-color;
-    padding: 22px;
-    border-radius: 12px;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    // border: 1px solid $text-color;
+    padding: 32px 24px;
 
-    @include desktop {
-      padding: 24px;
+    // border-radius: 12px;
+    @include tablet {
+      padding: 16px 24px;
+      width: fit-content;
     }
+
   }
 
-  @include tablet {}
-
-  @include laptop {}
-
-  @include desktop {}
 
 
 }
 
 .submit-btn__text {
-  @include general-text;
-  color: $accent-color;
-  font-weight: 500;
+  // @include general-text;
+  // color: $accent-color;
+  // font-weight: 500;
 
 }
 

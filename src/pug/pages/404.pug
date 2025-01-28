@@ -5,7 +5,7 @@ block variable
 block meta
     title= '404'
     meta(name='description' content='')
-    
+
 block head
     link(rel='stylesheet' href="./assets/styles/main.min.css")
 
@@ -17,17 +17,13 @@ block scripts
 block content
     section.notFound
         .notFound-bg
-            .container.notFound__text
-                .notFound__title 
-                    p 404
-                    h1 Упс, щось пішло не так...
-                .notFound-links__wrap 
-                    a.general-button(href="") 
-                        p Повернутися назад
+            img(src="./assets/images/404.jpg" alt="beautiful houses")
+            .notFound__text
+                p 404
+                h1 Ця сторінка відсутня. Давайте допоможемо вам повернутися на потрібний шлях!
+                a.accent-btn(href="/") 
+                    span Повернутись на головну
 
-                    a.general-button(href="/") 
-                        p На головну
-            
 
 
 

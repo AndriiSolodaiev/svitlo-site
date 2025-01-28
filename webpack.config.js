@@ -13,6 +13,7 @@ const config = {
     terms: './src/assets/scripts/gulp-modules/terms.js',
     about: './src/assets/scripts/gulp-modules/about.js',
     singleHouse: './src/assets/scripts/gulp-modules/single-house.js',
+    houseTypes: './src/assets/scripts/gulp-modules/house-types.js',
   },
   output: {
     filename: '[name].bundle.js',

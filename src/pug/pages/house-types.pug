@@ -2,9 +2,9 @@
 extends ../layout/main
 block variable
   -
-    var title_page = 'index'
-    var id_page = 'id-page-index'
-    var class_page = 'class-page-index'
+    var title_page = 'house-types'
+    var id_page = 'id-page-house-types'
+    var class_page = 'class-page-house-types'
     var headerCustomClass = 'type1' 
     var breadcrumbsSubitem = [
       {
@@ -22,32 +22,34 @@ block scripts
   script(defer src='./assets/scripts/vendors.bundle.js')
   script(defer src='./assets/scripts/header.bundle.js')
   script(defer src='./assets/scripts/footer.bundle.js')
-  script(defer src='./assets/scripts/index.bundle.js')
+  script(defer src='./assets/scripts/houseTypes.bundle.js')
 block content
-  section.projects.container
+  section.projects.container.house-types
     .left-block
       a(href="/single-project").project-card 
         img(src="./assets/images/Projects/project_1.jpg" alt="project_1")
         .project-card__mask 
         .project-card__text 
 
-          h2 Hill 
+          h2 Таунхаус
             br
-            | Park
+            | №45.3. 0.100
       a(href="/single-project").project-card 
         img(src="./assets/images/Projects/project_2.jpg" alt="project_2")
         .project-card__mask 
         .project-card__text 
 
-          h2 Hidden 
+          h2 Таунхаус
             br
-            | House
+            | №50.3. 0.100
       a(href="/single-project").project-card 
         img(src="./assets/images/Projects/project_3.jpg" alt="project_3")
         .project-card__mask 
         .project-card__text 
 
-          h2 O.Krasa
+          h2 Таунхаус 
+            br
+            | №34.1. 0.100
 
     .right-block
       a(href="/single-project").project-card 
@@ -55,33 +57,33 @@ block content
         .project-card__mask 
         .project-card__text 
 
-          h2 Wooden 
+          h2 Таунхаус 
             br
-            | House
+            | №36.2. 0.100
       a(href="/single-project").project-card 
         img(src="./assets/images/Projects/project_5.jpg" alt="project_5")
         .project-card__mask 
         .project-card__text 
 
-          h2 Loft
+          h2 Таунхаус
             br
-            | Affair
+            | №24.8. 0.100
       a(href="/single-project").project-card 
         img(src="./assets/images/Projects/project_6.jpg" alt="project_6")
         .project-card__mask 
         .project-card__text 
 
-          h2 Loft
+          h2 Таунхаус
             br
-            | City
+            | №21.2. 0.100
       a(href="/single-project").project-card 
         img(src="./assets/images/Projects/project_7.jpg" alt="project_7")
         .project-card__mask 
         .project-card__text 
 
-          h2 City 
+          h2 Таунхаус
             br
-            | House
+            | №47.5. 0.100
 
 block footer
   include ../includes/footer.pug

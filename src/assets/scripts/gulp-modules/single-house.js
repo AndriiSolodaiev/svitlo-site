@@ -1,6 +1,8 @@
 import Swiper, { Pagination } from 'swiper';
 import { gsap, ScrollTrigger, CustomEase } from 'gsap/all';
 import device from 'current-device';
+import { initSmoothScrolling } from '../modules/scroll/leniscroll';
+initSmoothScrolling();
 
 gsap.registerPlugin(ScrollTrigger, CustomEase);
 
@@ -9,22 +11,57 @@ const swiperGallery = new Swiper('.swiper-gallery', {
   speed: 1000,
   spaceBetween: 8,
   slidesPerView: 1,
+  breakpoints: {
+    1366: {
+      enabled: false,
+    },
+  },
   pagination: {
     el: '.swiper-pagination',
     clickable: true,
   },
 });
-
+const swiperGalleryPc = new Swiper('.swiper-gallery-pc', {
+  modules: [Pagination],
+  speed: 1000,
+  spaceBetween: 8,
+  slidesPerView: 1,
+  breakpoints: {
+    1366: {
+      enabled: false,
+    },
+  },
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+});
 const swiperAchievements = new Swiper('.swiper-achievements', {
   speed: 1000,
   slidesPerView: 1.1,
   spaceBetween: 8,
+  breakpoints: {
+    768: {
+      slidesPerView: 3,
+    },
+    1366: {},
+  },
 });
 
 const swiperOther = new Swiper('.swiper-other', {
   speed: 1000,
   spaceBetween: 8,
   slidesPerView: 1.1,
+  breakpoints: {
+    768: {
+      slidesPerView: 1.9,
+    },
+    1366: {
+      // enabled: false,
+      slidesPerView: 3.8,
+      spaceBetween: 10,
+    },
+  },
 });
 
 const swiperMaterials = new Swiper('.swiper-materials-btns', {
@@ -61,16 +98,40 @@ const floorData = {
       area: '17.71  м2',
       image: 'https://via.placeholder.com/400x300?text=Floor+2+Room+4',
     },
+    {
+      id: 'room5',
+      name: 'Room 5',
+      area: '17.71  м2',
+      image: 'https://via.placeholder.com/400x300?text=Floor+2+Room+4',
+    },
   ],
   floor3: [
     {
-      id: 'room5',
+      id: 'room3',
       name: 'Room 3',
       area: '6.31  м2',
       image: 'https://via.placeholder.com/400x300?text=Floor+2+Room+3',
     },
     {
       id: 'room4',
+      name: 'Room 4',
+      area: '17.71  м2',
+      image: 'https://via.placeholder.com/400x300?text=Floor+2+Room+4',
+    },
+    {
+      id: 'room5',
+      name: 'Room 4',
+      area: '17.71  м2',
+      image: 'https://via.placeholder.com/400x300?text=Floor+2+Room+4',
+    },
+    {
+      id: 'room6',
+      name: 'Room 4',
+      area: '17.71  м2',
+      image: 'https://via.placeholder.com/400x300?text=Floor+2+Room+4',
+    },
+    {
+      id: 'room7',
       name: 'Room 4',
       area: '17.71  м2',
       image: 'https://via.placeholder.com/400x300?text=Floor+2+Room+4',

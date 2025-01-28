@@ -1,10 +1,37 @@
+.terms-hero {
+  .sp-hero-mask {
+
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.21) 30%, rgba(0, 0, 0, 0.70) 100%);
+  }
+
+  @include tablet {
+    .sp-hero__content {
+      h1 {
+        text-align: center;
+      }
+    }
+  }
+}
+
 .terms {
 
-  padding: $offset 4px;
+  padding: 0 4px var(--offset);
 
   .sp-infra__container {
     padding-bottom: 16px;
   }
+
+  @include tablet {
+    .swiper-slide {
+      text-align: center;
+      flex: 1;
+    }
+
+    .terms-content__item {
+      aspect-ratio: 1/0.4;
+    }
+  }
+
 }
 
 .terms-content {
@@ -38,7 +65,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    grid-gap: $offset;
+    grid-gap: var(--offset);
 
   }
 
@@ -67,18 +94,79 @@
 }
 
 .terms-faq {
-  padding: $offset;
+  padding: var(--offset);
 
   margin: 0 4px;
   background-color: $wc ;
   border-radius: $border-radius-block;
 
+  &__img-pc {
+    display: none;
+  }
+
+  @include laptop {
+    display: flex;
+    justify-content: flex-end;
+    background-color: transparent;
+    position: relative;
+    padding: var(--offset);
+    height: 650px;
+    max-height: 100vh;
+    overflow: hidden;
+    margin: 0 var(--offset);
+
+    &__img-pc {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+    }
+  }
+}
+
+.terms-wrapper {
+  h2 {
+    display: none;
+  }
+
+  @include tablet {
+    h2 {
+      display: block;
+      @include subtitle-text;
+      color: $accent-color;
+      margin-bottom: 24px;
+    }
+  }
+
+  @include laptop {
+    background-color: $wc ;
+    border-radius: $border-radius-block;
+    width: 30%;
+    padding: 30px;
+    overflow: hidden;
+
+    h2 {
+      font-size: 2.916vw;
+      margin-bottom: 30px;
+    }
+  }
 }
 
 .terms-faq__list {
   display: flex;
   flex-direction: column;
-  gap: $offset;
+  gap: var(--offset);
+
+  @include laptop {
+    overflow-y: auto;
+    height: calc(100% - 2.916vw - 30px);
+
+    padding-right: var(--offset)
+  }
 }
 
 .terms-faq__item {
@@ -87,6 +175,7 @@
   background-color: $soft-accent;
   display: block;
   position: relative;
+  cursor: pointer;
 
   &>svg {
     position: absolute;
@@ -100,7 +189,7 @@
   h3 {
     @include subgeneral-text;
     color: $accent-color;
-    margin-bottom: 16px;
+
     max-width: 86%;
 
   }
@@ -108,15 +197,14 @@
   p {
     @include general-text;
     color: $text-color;
-    max-height: 0;
-    transition: max-height 0.6s ease-in-out;
+    height: 0;
+    transition: margin-top 0.35s ease-in-out;
     overflow: hidden;
   }
 
   &.is-open {
     p {
-      max-height: 1000px;
-      // overflow: auto;
+      margin-top: 16px;
 
     }
 

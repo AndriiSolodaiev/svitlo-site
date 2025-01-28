@@ -1,10 +1,15 @@
 .sp-hero {
   position: relative;
-  height: calc(100vh - $header-h - $offset);
-
+  height: calc(100vh - $header-h - var(--offset));
   width: 100%;
-  padding: $offset $offset/2;
-  padding-bottom: 0;
+  padding: var(--offset) calc(var(--offset)/2);
+
+
+  @include laptop {
+    height: calc(100vh - var(--offset));
+    padding: var(--offset);
+
+  }
 }
 
 .sp-hero-mask {
@@ -31,10 +36,14 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: $offset * 2;
+  padding: calc(var(--offset) * 2);
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @include laptop {
+    padding-right: calc(4.16vw + var(--offset) * 3);
+  }
 }
 
 .page-nav-btn {
@@ -45,48 +54,139 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background-color 0.35s ease-in-out;
+
 
   svg {
     width: 24px;
     height: 24px;
   }
+
+  @include laptop {
+    width: 4.16vw;
+    height: 4.16vw;
+    border-radius: 12px;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $accent-color-hover;
+    }
+
+    svg {
+      width: 1.66vw;
+      height: 1.66vw;
+    }
+
+  }
 }
 
 .sp-hero__content {
-  padding: $offset;
+  padding: var(--offset);
   position: absolute;
-  bottom: 0;
-  width: calc(100% - 2 * $offset);
+  bottom: var(--offset);
+
+  width: calc(100% - var(--offset));
+
+  @include tablet {
+    transform: translateY(50%);
+    bottom: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
 
   h1 {
     @include title-text;
     color: $wc;
     margin-bottom: 16px;
-    padding-left: $offset;
-    padding-right: $offset;
+    padding-left: var(--offset);
+    padding-right: var(--offset);
 
   }
 
+  h2 {
+    padding-left: var(--offset);
+    padding-right: var(--offset);
+  }
+
   p {
-    @include general-text;
+    @include subgeneral-text;
     color: $wc;
     font-size: 18px;
-    padding-left: $offset;
-    padding-right: $offset;
+    padding-left: var(--offset);
+    padding-right: var(--offset);
     margin-bottom: 48px;
+
+
+    @include tablet {
+      max-width: 380px;
+      text-align: center;
+    }
+
+    @include laptop {
+
+      max-width: 23.43vw;
+    }
   }
 
   .accent-btn {
     padding: 32px 0;
     width: 100%;
+
+    @include tablet {
+      width: fit-content;
+      padding: 16px 24px;
+    }
+
+    @include laptop {
+      width: fit-content;
+      padding: 24px;
+    }
+  }
+}
+
+.sp-hero__info-wrap {
+  display: none;
+
+  @include laptop {
+    display: flex;
+    gap: var(--offset);
+    position: absolute;
+    bottom: var(--offset);
+    left: var(--offset);
+    width: calc(100% - var(--offset)*2);
+
+    .sp-parameters__gen-block {
+      background-color: transparent;
+      flex: 1;
+      padding: 30px;
+      border: 1px solid rgba(239, 235, 235, 0.20);
+
+      h3,
+      p {
+        color: $wc;
+      }
+
+      svg path {
+        fill: $wc;
+      }
+    }
   }
 }
 
 .sp-parameters {
-  padding: $offset $offset/2;
+  padding: 0 calc(var(--offset)/2) var(--offset);
+  // margin-top: var(--offset);
   display: flex;
   flex-wrap: wrap;
-  gap: $offset;
+  gap: var(--offset);
+
+  @include laptop {
+    display: none
+  }
 }
 
 .sp-parameters__text-block {
@@ -108,6 +208,10 @@
   @include subtitle-text;
   color: $accent-color;
   margin-bottom: 16px;
+
+  @include laptop {
+    font-size: 2.91vw;
+  }
 }
 
 .sp-parameters__gen-block {
@@ -116,16 +220,15 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: calc((100% - var(--offset)) / 2);
+  height: 158px;
+  padding: 24px 16px;
 
   &.first {
     background-color: transparent;
     outline: 1px solid $wc;
-    // margin-right: $offset;
+    // margin-right: var(--offset);
   }
-
-  width: calc((100% - $offset) / 2);
-  height: 158px;
-  padding: 24px 16px;
 
   &.mob {
     background-color: $second-accent-color;
@@ -145,8 +248,37 @@
       height: 100%;
       width: auto
     }
+
   }
 
+  @include tablet {
+    width: calc((100% - var(--offset) * 2) / 3);
+    height: 195px;
+
+    &.first {
+      background-color: $wc;
+      outline: 1px solid $wc;
+
+    }
+
+    &.mob {
+      background-color: $wc;
+      width: calc((100% - var(--offset) * 2) / 3);
+
+      h3,
+      p {
+        color: $accent-color;
+      }
+
+      svg path {
+        fill: $accent-color
+      }
+
+      img {
+        display: none;
+      }
+    }
+  }
 }
 
 .gen-block__title-wrap {
@@ -171,23 +303,48 @@
 }
 
 .sp-map {
-  height: calc(100vh - $header-h - $offset);
-  position: relative;
-  padding: 0 $offset/2 $offset;
-  border-radius: $border-radius-block;
-  overflow: hidden;
+  height: calc(100vh - $header-h - var(--offset));
+
+  padding: 0 calc(var(--offset)/2) var(--offset);
+
+  @include laptop {
+    padding: 0 var(--offset) var(--offset);
+    // height: calc(100vh - var(--offset));
+  }
+
+  .map {
+    border-radius: $border-radius-block;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+
+  }
 }
 
 .map-locations-container {
-  width: calc(100% - $offset*2);
+  width: calc(100% - var(--offset)*2);
   position: absolute;
   z-index: 2;
-  left: $offset;
-  bottom: $offset;
+  left: var(--offset);
+  bottom: var(--offset);
   border-radius: $border-radius-block;
   background-color: $second-accent-color;
-  padding: $offset;
+  padding: var(--offset);
   overflow: hidden;
+
+  @include laptop {
+    background-color: transparent;
+
+    h2 {
+      display: none;
+    }
+  }
 
   .decor {
     width: 100px;
@@ -196,12 +353,17 @@
     background-color: $wc;
     opacity: 0.2;
     border-radius: 2px;
+
   }
 
   h2 {
     @include menu-text;
     color: $wc;
     margin-bottom: 16px;
+
+    @include tablet {
+      font-size: 42px;
+    }
   }
 
 }
@@ -214,6 +376,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include laptop {
+      flex: 1;
+    }
 
     img {
       width: 30%;
@@ -247,7 +413,7 @@
 
       .info-item {
         display: flex;
-        gap: $offset;
+        gap: var(--offset);
         align-items: center;
 
         &>p {
@@ -268,32 +434,56 @@
 }
 
 .sp-description {
-  height: calc(100vh - $header-h - $offset);
-  width: 100%;
+  height: calc(100vh - $header-h - var(--offset));
+  width: calc(100% - var(--offset));
   border-radius: $border-radius-block;
   overflow: hidden;
   position: relative;
+
+  margin: 0 calc(var(--offset) / 2);
+
+  @include laptop {
+    margin: 0 calc(var(--offset));
+    width: calc(100% - var(--offset)*2);
+    display: flex;
+    align-items: stretch;
+    gap: var(--offset);
+
+  }
 
   &>img {
     object-fit: cover;
     width: 100%;
     height: 100%;
+
+    @include laptop {
+      border-radius: $border-radius-block;
+      width: 70%;
+    }
   }
 
   &-content {
     border-radius: $border-radius-md;
     padding: 24px 16px;
     position: absolute;
-    bottom: $offset;
-    left: $offset;
-    width: calc(100% - $offset * 2);
+    bottom: var(--offset);
+    left: var(--offset);
+    width: calc(100% - var(--offset) * 2);
     background-color: $wc;
+
+    @include laptop {
+      position: static;
+      display: flex;
+
+      flex-direction: column;
+      width: 30%;
+    }
 
     .logo {
       position: absolute;
       background-color: $wc;
       top: 0;
-      right: $offset*2;
+      right: calc(var(--offset)*2);
       border-radius: 50%;
       width: 60px;
       height: 60px;
@@ -306,6 +496,10 @@
         width: 52px;
         height: 52px;
         border-radius: 50%;
+      }
+
+      @include laptop {
+        display: none
       }
     }
 
@@ -327,6 +521,10 @@
       justify-content: space-between;
       align-items: center;
 
+      @include laptop {
+        margin-top: auto
+      }
+
       .content-price {
         &>span {
           @include tiny-text;
@@ -346,18 +544,24 @@
 
 .sp-types {
   padding: 8px 4px;
+
+  @include laptop {
+    padding: var(--offset);
+  }
 }
 
 .swiper-types {
 
   .swiper-slide {
-    width: 100%;
-    padding-bottom: 150%;
+    // width: 100%;
+    // padding-bottom: 150%;
     border-radius: $border-radius-block;
     overflow: hidden;
     position: relative;
 
-    &>img {
+
+
+    .slide-wrapper>img {
       position: absolute;
       z-index: 1;
       top: 0;
@@ -368,12 +572,23 @@
 
     }
 
+    .slide-wrapper {
+      position: relative;
+      padding-bottom: 150%;
+      display: block;
+
+      @include tablet {
+        padding-bottom: 100%;
+      }
+
+    }
+
     .type-info-wrap {
       position: absolute;
       z-index: 2;
-      left: $offset;
-      bottom: $offset;
-      width: calc(100% - $offset * 2);
+      left: var(--offset);
+      bottom: var(--offset);
+      width: calc(100% - var(--offset) * 2);
       padding: 16px;
       background-color: $wc;
       border-radius: $border-radius-md;
@@ -437,24 +652,41 @@
 .sp-infra {
   padding: 0 4px;
 
+  @include laptop {
+    padding: 0 var(--offset);
+  }
+
   &__container {
     padding: 24px 8px 8px;
     background-color: $wc;
     border-radius: $border-radius-block;
     overflow: hidden;
     width: 100%;
-    height: calc(100% - $offset - $header-h );
+    height: calc(100% - var(--offset) - $header-h );
+
+    @include laptop {
+      position: relative;
+      padding: 0;
+    }
 
     &>h2 {
       @include subtitle-text;
       color: $accent-color;
       margin-bottom: 16px;
+
+      @include laptop {
+        display: none;
+      }
     }
 
     &>p {
       @include general-text;
       color: $text-color;
       margin-bottom: 24px;
+
+      @include laptop {
+        display: none;
+      }
     }
 
   }
@@ -465,35 +697,90 @@
     padding-bottom: 120%;
     position: relative;
 
-    &>img {
+    @include tablet {
+      padding-bottom: 80%;
+    }
+
+    @include laptop {
+      padding-bottom: calc(90vh - var(--offset)*2);
+    }
+
+    .mask {
+      display: none;
+
+      @include laptop {
+        display: block;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 30%, rgba(0, 0, 0, 0.70) 100%), linear-gradient(180deg, rgba(0, 0, 0, 0.00) 30%, rgba(0, 0, 0, 0.70) 100%);
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+      }
+
+    }
+
+    .image-container {
       position: absolute;
       z-index: 1;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+
+      img.current-image {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
 
     &__text {
       position: absolute;
       z-index: 2;
-      left: $offset;
-      bottom: $offset;
-      width: calc(100% - $offset * 2);
+      left: var(--offset);
+      bottom: var(--offset);
+      width: calc(100% - var(--offset) * 2);
       padding: 16px;
       background-color: $wc;
       border-radius: $border-radius-md;
+      overflow: hidden;
+
+      @include laptop {
+        background-color: transparent;
+        border-radius: $border-radius-block;
+        border: 1px solid rgba(239, 235, 235, 0.20);
+        padding: 26px 24%;
+
+      }
 
       &>h3 {
         @include menu-text;
         color: $accent-color;
         margin-bottom: 16px;
+
+        @include laptop {
+          text-align: center;
+          color: $wc;
+          font-size: 2.916vw;
+          font-weight: 600;
+        }
       }
 
       &>p {
         @include general-text;
         color: $text-color;
+
+        @include laptop {
+          text-align: center;
+          color: $wc;
+          font-size: 1.25vw;
+        }
       }
     }
   }
@@ -501,63 +788,72 @@
 
 }
 
-.swiper-infra-btns {
-  margin-bottom: 24px;
-
-  .swiper-slide {
-    border-radius: $border-radius-btn;
-    padding: 16px 24px;
-    width: fit-content;
-    background-color: $soft-accent;
-    transition: background-color 0.4s ease-in-out;
-
-    span {
-      @include subgeneral-text;
-      color: $accent-color;
-      transition: color 0.4s ease-in-out;
-    }
-
-    &.active {
-      background-color: $second-accent-color;
-
-      span {
-
-        color: $wc;
-      }
-    }
+.tablet.landscape {
+  .sp-infra-content {
+    padding-bottom: calc(90vh - var(--offset)*2 - $header-h);
   }
 }
 
+.swiper-infra-btns,
 .swiper-materials-btns {
   margin-bottom: 24px;
 
+  @include laptop {
+    position: absolute;
+    z-index: 3;
+    top: var(--offset);
+    left: var(--offset);
+    width: calc(100% - var(--offset)*2);
+    padding: var(--offset);
+    border-radius: $border-radius-block;
+    background-color: $wc;
+  }
+
   .swiper-slide {
     border-radius: $border-radius-btn;
     padding: 16px 24px;
     width: fit-content;
     background-color: $soft-accent;
     transition: background-color 0.4s ease-in-out;
+    cursor: pointer;
+
+    @include laptop {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    }
 
     span {
       @include subgeneral-text;
       color: $accent-color;
-
       transition: color 0.4s ease-in-out;
+
+
     }
 
     &.active {
       background-color: $second-accent-color;
+      cursor: no-drop;
+      pointer-events: none;
 
       span {
+
         color: $wc;
       }
     }
   }
 }
 
-.sp-gallery {
-  padding: 8px 4px;
 
+
+.sp-gallery {
+  padding: var(--offset) 4px;
+
+  @include laptop {
+    padding: var(--offset);
+  }
 }
 
 .swiper-gallery {
@@ -586,12 +882,14 @@
   }
 
   .swiper-slide {
-    height: calc(100vh - $offset - $header-h);
+    height: calc(100vh - var(--offset) - $header-h);
     border-radius: $border-radius-block;
     position: relative;
-
-
     overflow: hidden;
+
+    @include laptop {
+      height: calc(100vh - var(--offset) * 2);
+    }
 
     .mask {
       position: absolute;
@@ -606,39 +904,54 @@
       z-index: 1;
       width: 100%;
       height: 100%;
-
+      object-fit: cover;
     }
 
   }
 }
 
 .sp-other-section {
-  padding: $offset 4px 0px
+  padding: var(--offset) 4px 0px;
+
+  @include laptop {
+    padding: var(--offset) var(--offset) 0px;
+  }
 }
 
 .sp-other {
   border-radius: $border-radius-block;
   background-color: $wc;
   overflow: hidden;
-
-  padding: 24px $offset $offset;
+  padding: 24px var(--offset) var(--offset);
 
   &>h2 {
     @include subtitle-text;
     color: $accent-color;
     margin-bottom: 24px;
-    padding-left: $offset;
+    padding-left: var(--offset);
   }
 }
 
 .swiper-other {
   .swiper-slide {
     position: relative;
-    padding-bottom: 130%;
+    // padding-bottom: 130%;
     border-radius: $border-radius-md;
     overflow: hidden;
 
-    &>img {
+
+    .slide-wrapper {
+      display: block;
+      position: relative;
+      padding-bottom: 150%;
+
+      @include tablet {
+        padding-bottom: 100%;
+      }
+
+    }
+
+    .slide-wrapper>img {
       position: absolute;
       width: 100%;
       height: 100%;
@@ -648,9 +961,9 @@
     .type-info-wrap {
       position: absolute;
       z-index: 2;
-      left: $offset;
-      bottom: $offset;
-      width: calc(100% - $offset * 2);
+      left: var(--offset);
+      bottom: var(--offset);
+      width: calc(100% - var(--offset) * 2);
       padding: 16px;
       background-color: $wc;
       border-radius: $border-radius-md;

@@ -4,18 +4,18 @@
   margin-left: auto;
   margin-right: auto;
 
-  @include tablet {
-    padding-left: 8px;
-    padding-right: 8px;
-  }
+  // @include tablet {
+  //   padding-left: 8px;
+  //   padding-right: 8px;
+  // }
 
   @include laptop {
     padding-left: 10px;
     padding-right: 10px;
   }
 
-  @include desktop {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
+  // @include desktop {
+  //   padding-left: 10px;
+  //   padding-right: 10px;
+  // }
 }

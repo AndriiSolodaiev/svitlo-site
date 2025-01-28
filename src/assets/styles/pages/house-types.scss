@@ -1,0 +1,11 @@
+.house-types .project-card .project-card__text h2 {
+  font-size: 24px;
+
+  @include tablet {
+    font-size: 42px;
+  }
+
+  @include laptop {
+    font-size: 1.875vw;
+  }
+}

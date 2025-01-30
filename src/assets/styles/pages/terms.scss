@@ -17,18 +17,42 @@
 
   padding: 0 4px var(--offset);
 
+  @include laptop {
+    padding: 0 var(--offset) var(--offset);
+  }
+
   .sp-infra__container {
-    padding-bottom: 16px;
+    padding: 24px 16px 16px;
+
+    @include laptop {
+      padding: 30px;
+    }
+  }
+
+  .swiper-slide {
+    white-space: nowrap;
   }
 
   @include tablet {
+    .terms-content__item {
+      aspect-ratio: 1/0.4;
+    }
+
+    @include laptop {
+      .terms-content__item {
+        aspect-ratio: 1/0.5;
+      }
+    }
+  }
+
+  @include laptop {
     .swiper-slide {
       text-align: center;
       flex: 1;
     }
 
-    .terms-content__item {
-      aspect-ratio: 1/0.4;
+    .swiper-infra-btns {
+      position: static;
     }
   }
 
@@ -41,24 +65,51 @@
   pointer-events: none;
   z-index: -1;
 
+  @include laptop {
+    display: flex;
+    align-items: center;
+
+
+  }
+
+
   &.is-visible {
     opacity: 1;
     position: static;
     pointer-events: all;
-    z-index: 1
+    z-index: 1;
   }
 
-  &>h3 {
-    @include menu-text;
-    color: $accent-color;
-    margin-bottom: 16px;
-  }
+  .terms-content__text {
+    @include laptop {
+      flex: 1;
 
-  &>p {
-    @include general-text;
-    color: $text-color;
-    margin-bottom: 16px;
+      &>h3,
+      &>p {
+        max-width: 80%
+      }
+    }
 
+    &>h3 {
+      @include menu-text;
+      color: $accent-color;
+      margin-bottom: 16px;
+    }
+
+    &>p {
+      @include general-text;
+      color: $text-color;
+      margin-bottom: 16px;
+
+    }
+
+    &>.accent-btn {
+      display: none;
+
+      @include laptop {
+        display: flex;
+      }
+    }
   }
 
   &__list {
@@ -67,6 +118,10 @@
     grid-template-rows: repeat(2, 1fr);
     grid-gap: var(--offset);
 
+    @include laptop {
+      flex: 1;
+      max-width: 50%;
+    }
   }
 
   &__item {
@@ -78,14 +133,24 @@
     flex-direction: column;
     aspect-ratio: 1 / 0.9;
 
+
+
     h4 {
       @include subgeneral-text;
-      color: $accent-color;
+      color: $text-color;
     }
 
     p {
       @include subtitle-text;
-      color: $accent-color;
+      color: $second-accent-color;
+
+      @include tablet {
+        font-size: 54px;
+      }
+
+      @include laptop {
+        font-size: 2.91vw
+      }
     }
 
 
@@ -200,6 +265,8 @@
     height: 0;
     transition: margin-top 0.35s ease-in-out;
     overflow: hidden;
+
+
   }
 
   &.is-open {
@@ -213,3 +280,72 @@
     }
   }
 }
+
+[data-terms-content="full"] {
+  .terms-content__item:last-child {
+    grid-area: 2 / 1 / 3 / 3;
+    aspect-ratio: auto;
+  }
+}
+
+[data-terms-content="trade-in"] {
+  .terms-content__list {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      display: grid;
+    }
+  }
+
+  .terms-content__item {
+    aspect-ratio: auto;
+
+    p {
+      margin-bottom: 16px;
+
+      @include tablet {
+        font-size: 42px;
+      }
+
+      @include laptop {
+        font-size: 2.91vw
+      }
+    }
+  }
+}
+
+[data-terms-content="loyal"] {
+  .terms-content__list {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      display: grid;
+    }
+  }
+
+  .terms-content__item {
+    aspect-ratio: auto;
+
+    svg {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 24px;
+    }
+
+    p {
+      margin-bottom: 8px;
+      color: $accent-color;
+      font-size: 24px;
+    }
+  }
+}
+
+// [data-terms-content] {
+//   .terms-content__list {
+//     @include laptop {
+//       aspect-ratio: auto;
+//     }
+//   }
+// }

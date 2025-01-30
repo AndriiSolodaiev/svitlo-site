@@ -23,7 +23,7 @@
       height: auto;
 
       @include tablet {
-        padding-bottom: calc(100vh - $header-h - var(--offset)*2);
+        padding-bottom: calc(100svh - $header-h - var(--offset)*2);
       }
 
       @include laptop {

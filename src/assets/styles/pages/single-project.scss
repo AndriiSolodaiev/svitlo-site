@@ -1,6 +1,6 @@
 .sp-hero {
   position: relative;
-  height: calc(100vh - $header-h - var(--offset));
+  height: calc(100svh - $header-h - var(--offset));
   width: 100%;
   padding: var(--offset) calc(var(--offset)/2);
 
@@ -303,7 +303,7 @@
 }
 
 .sp-map {
-  height: calc(100vh - $header-h - var(--offset));
+  height: calc(100svh - $header-h - var(--offset));
 
   padding: 0 calc(var(--offset)/2) var(--offset);
 
@@ -436,7 +436,7 @@
 }
 
 .sp-description {
-  height: calc(100vh - $header-h - var(--offset));
+  height: calc(100svh - $header-h - var(--offset));
   width: calc(100% - var(--offset));
   border-radius: $border-radius-block;
   overflow: hidden;
@@ -884,7 +884,7 @@
   }
 
   .swiper-slide {
-    height: calc(100vh - var(--offset) - $header-h);
+    height: calc(100svh - var(--offset) - $header-h);
     border-radius: $border-radius-block;
     position: relative;
     overflow: hidden;

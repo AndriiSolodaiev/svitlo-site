@@ -392,6 +392,7 @@ $cubic: cubic-bezier(0, .99, .48, .99);
         @include general-text;
         color: $accent-color;
         transition: color 0.35s ease-in-out;
+        font-weight: 500;
       }
     }
   }
@@ -639,12 +640,20 @@ $cubic: cubic-bezier(0, .99, .48, .99);
   border-radius: 50%;
   transition: background-color 0.35s ease-in-out;
 
+  svg {
+    transition: transform 0.35s ease-in-out;
+  }
+
   @include laptop {
 
     &:hover,
     &:focus,
     &:active {
       background-color: $soft-accent-hover;
+
+      svg {
+        transform: scale(1.15);
+      }
     }
   }
 }
@@ -728,6 +737,7 @@ $cubic: cubic-bezier(0, .99, .48, .99);
   }
 
   @include laptop {
+    font-size: 20px;
 
     &:hover,
     &:focus {

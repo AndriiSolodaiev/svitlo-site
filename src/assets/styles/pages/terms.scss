@@ -21,11 +21,17 @@
     padding: 0 var(--offset) var(--offset);
   }
 
+  .terms-container {
+    @include laptop {
+      padding: 0 20px;
+    }
+  }
+
   .sp-infra__container {
     padding: 24px 16px 16px;
 
     @include laptop {
-      padding: 30px;
+      padding: var(--offset) var(--offset) 30px;
     }
   }
 
@@ -49,10 +55,16 @@
     .swiper-slide {
       text-align: center;
       flex: 1;
+
+      &:last-child {
+        margin-right: 0 !important;
+      }
     }
 
     .swiper-infra-btns {
       position: static;
+      width: 100%;
+      padding: 0;
     }
   }
 
@@ -94,6 +106,15 @@
       @include menu-text;
       color: $accent-color;
       margin-bottom: 16px;
+
+      @include tablet {
+        font-size: 42px;
+      }
+
+      @include laptop {
+        font-size: 2.91vw;
+      }
+
     }
 
     &>p {
@@ -107,6 +128,7 @@
       display: none;
 
       @include laptop {
+        margin-top: 40px;
         display: flex;
       }
     }
@@ -136,8 +158,9 @@
 
 
     h4 {
-      @include subgeneral-text;
+      @include general-text;
       color: $text-color;
+      font-weight: 400;
     }
 
     p {
@@ -165,8 +188,14 @@
   background-color: $wc ;
   border-radius: $border-radius-block;
 
+
+
   &__img-pc {
     display: none;
+  }
+
+  @include tablet {
+    padding-top: 24px;
   }
 
   @include laptop {
@@ -179,6 +208,7 @@
     max-height: 100vh;
     overflow: hidden;
     margin: 0 var(--offset);
+    margin-bottom: var(--offset);
 
     &__img-pc {
       display: block;
@@ -265,8 +295,6 @@
     height: 0;
     transition: margin-top 0.35s ease-in-out;
     overflow: hidden;
-
-
   }
 
   &.is-open {

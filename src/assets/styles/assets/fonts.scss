@@ -37,6 +37,24 @@
 
 @font-face {
   font-family: 'SFProDisplay';
+  src: local('SFProDisplay Light'), local('SFProDisplay-Light'),
+    url('../fonts/SFProDisplay-Light.woff') format('woff'),
+    url('../fonts/SFProDisplay-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  src: local('SFProDisplay Regular'), local('SFProDisplay-Regular'),
+    url('../fonts/SFProDisplay-Regular.woff') format('woff'),
+    url('../fonts/SFProDisplay-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
   src: local('SFProDisplay Medium'), local('SFProDisplay-Medium'),
     url('../fonts/SFProDisplay-Medium.woff') format('woff'),
     url('../fonts/SFProDisplay-Medium.woff2') format('woff2');

@@ -84,6 +84,7 @@
     @include general-text;
     color: $text-color;
     margin-bottom: 16px;
+    font-weight: 400;
 
     &.italic {
       font-style: italic;
@@ -238,12 +239,12 @@
       h3 {
         @include menu-text;
         color: $accent-color;
-        margin: 4px;
+        margin-bottom: 4px;
       }
 
       p {
         @include general-text;
-        color: $accent-color;
+        color: $text-color;
 
       }
     }

@@ -1,6 +1,8 @@
 .sh-hero {
   position: relative;
 
+
+
   .page-nav-btn {
     position: absolute;
     z-index: 2;
@@ -9,6 +11,8 @@
   }
 
   .swiper-gallery {
+    padding: 0;
+
     .swiper-pagination {
       top: auto;
       bottom: 24px;
@@ -23,7 +27,8 @@
       height: auto;
 
       @include tablet {
-        padding-bottom: calc(100svh - $header-h - var(--offset)*2);
+        padding-bottom: calc(100svh - var(--offset)*2 - 364px - $header-h);
+        ;
       }
 
       @include laptop {
@@ -56,7 +61,7 @@
     border-radius: $border-radius-block;
     background-color: $wc;
     padding: 24px 16px;
-    margin: var(--offset) 0;
+    margin: var(--offset) 0 0;
 
     h1 {
       @include subtitle-text;
@@ -102,11 +107,17 @@
     padding: 0 var(--offset) var(--offset);
 
     .swiper-materials-btns {
+      width: 100%;
+      padding: 0 0 var(--offset);
       position: static;
       margin-bottom: 0;
 
       .swiper-slide {
         flex-direction: column;
+
+        &:last-child {
+          margin-right: 0 !important;
+        }
       }
     }
 
@@ -116,6 +127,7 @@
       .sh-plannings__img-wrap {
         border: 1px solid var(--backgroung, #EFEBEB);
         background-color: transparent;
+        margin-bottom: var(--offset);
       }
     }
   }
@@ -134,7 +146,7 @@
 
     @include laptop {
       padding: var(--offset);
-      height: calc(100vh - var(--offset));
+      // height: calc(100vh - var(--offset));
     }
 
     &>h2 {
@@ -179,7 +191,7 @@
   }
 
   &-content {
-    margin-top: 24px;
+
     display: flex;
     flex-direction: column;
     /* Для вертикального розташування дітей */
@@ -248,6 +260,18 @@
   @include laptop {
     display: block;
     padding-bottom: 0;
+    margin-right: var(--offset);
+    margin-left: var(--offset);
+  }
+}
 
+.tablet.landscape {
+  .swiper-gallery {
+
+    .swiper-slide {
+
+      padding-bottom: calc(100svh - var(--offset)*2 - $header-h);
+      ;
+    }
   }
 }

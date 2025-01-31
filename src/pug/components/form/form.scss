@@ -176,6 +176,12 @@
   }
 }
 
+.form-wrapper {
+  @include laptop {
+    width: 100%;
+  }
+}
+
 .form {
 
   @include tablet {}
@@ -199,9 +205,7 @@
 
   @include laptop {}
 
-  @include desktop {
-    margin-bottom: 40px;
-  }
+
 }
 
 .input-title {
@@ -226,7 +230,7 @@
 }
 
 .input-message {
-  position: absolute;
+  // position: absolute;
   bottom: -16px;
   // left: 50%;
   // transform: translateX(-50%);
@@ -245,6 +249,9 @@
   background-color: $soft-accent;
   transition: background-color 0.35s ease-in-out;
 
+  @include laptop {
+    padding: 20px 24px;
+  }
 
   &::placeholder {
     @include tiny-text;
@@ -335,7 +342,7 @@
 
 .input-message {
   @include tiny-text;
-
+  color: red;
 }
 
 .footer .iti--allow-dropdown input {

@@ -96,7 +96,7 @@
     a {
       @include general-text;
       color: $accent-color;
-
+      font-weight: 500;
     }
   }
 
@@ -115,6 +115,7 @@
     a {
       @include general-text;
       color: $accent-color;
+      font-weight: 500;
 
       @include laptop {
         &:not(.social-item) {

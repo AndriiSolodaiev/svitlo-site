@@ -2,6 +2,8 @@ import Swiper, { EffectFade, Pagination } from 'swiper';
 import { gsap, ScrollTrigger, CustomEase } from 'gsap/all';
 import device from 'current-device';
 import { initSmoothScrolling } from '../modules/scroll/leniscroll';
+import axios from 'axios';
+
 initSmoothScrolling();
 
 gsap.registerPlugin(ScrollTrigger, CustomEase);
@@ -68,89 +70,134 @@ const swiperOther = new Swiper('.swiper-other', {
   },
 });
 
-const swiperMaterials = new Swiper('.swiper-materials-btns', {
-  speed: 1000,
-  slidesPerView: 'auto',
-  spaceBetween: 8,
-});
+// const swiperMaterials = new Swiper('.swiper-materials-btns', {
+//   speed: 1000,
+//   slidesPerView: 'auto',
+//   spaceBetween: 8,
+// });
 
-const floorData = {
-  floor1: [
-    {
-      id: 'room1',
-      name: 'Room 1',
-      area: '17.71  м2',
-      image: './assets/images/single-project/materials.jpg',
-    },
-    {
-      id: 'room2',
-      name: 'Room 2',
-      area: '33.91 м2',
-      image: './assets/images/single-project/description.jpg',
-    },
-  ],
-  floor2: [
-    {
-      id: 'room3',
-      name: 'Room 3',
-      area: '6.31  м2',
-      image: 'https://via.placeholder.com/400x300?text=Floor+2+Room+3',
-    },
-    {
-      id: 'room4',
-      name: 'Room 4',
-      area: '17.71  м2',
-      image: 'https://via.placeholder.com/400x300?text=Floor+2+Room+4',
-    },
-    {
-      id: 'room5',
-      name: 'Room 5',
-      area: '17.71  м2',
-      image: 'https://via.placeholder.com/400x300?text=Floor+2+Room+4',
-    },
-  ],
-  floor3: [
-    {
-      id: 'room3',
-      name: 'Room 3',
-      area: '6.31  м2',
-      image: 'https://via.placeholder.com/400x300?text=Floor+2+Room+3',
-    },
-    {
-      id: 'room4',
-      name: 'Room 4',
-      area: '17.71  м2',
-      image: 'https://via.placeholder.com/400x300?text=Floor+2+Room+4',
-    },
-    {
-      id: 'room5',
-      name: 'Room 4',
-      area: '17.71  м2',
-      image: 'https://via.placeholder.com/400x300?text=Floor+2+Room+4',
-    },
-    {
-      id: 'room6',
-      name: 'Room 4',
-      area: '17.71  м2',
-      image: 'https://via.placeholder.com/400x300?text=Floor+2+Room+4',
-    },
-    {
-      id: 'room7',
-      name: 'Room 4',
-      area: '17.71  м2',
-      image: 'https://via.placeholder.com/400x300?text=Floor+2+Room+4',
-    },
-  ],
-};
+// const floorData = {
+//   floor1: [
+//     {
+//       id: 'room1',
+//       name: 'Room 1',
+//       area: '17.71  м2',
+//       image: './assets/images/single-project/materials.jpg',
+//     },
+//     {
+//       id: 'room2',
+//       name: 'Room 2',
+//       area: '33.91 м2',
+//       image: './assets/images/single-project/description.jpg',
+//     },
+//   ],
+//   floor2: [
+//     {
+//       id: 'room3',
+//       name: 'Room 3',
+//       area: '6.31  м2',
+//       image: 'https://via.placeholder.com/400x300?text=Floor+2+Room+3',
+//     },
+//     {
+//       id: 'room4',
+//       name: 'Room 4',
+//       area: '17.71  м2',
+//       image: 'https://via.placeholder.com/400x300?text=Floor+2+Room+4',
+//     },
+//     {
+//       id: 'room5',
+//       name: 'Room 5',
+//       area: '17.71  м2',
+//       image: 'https://via.placeholder.com/400x300?text=Floor+2+Room+4',
+//     },
+//   ],
+//   floor3: [
+//     {
+//       id: 'room3',
+//       name: 'Room 3',
+//       area: '6.31  м2',
+//       image: 'https://via.placeholder.com/400x300?text=Floor+2+Room+3',
+//     },
+//     {
+//       id: 'room4',
+//       name: 'Room 4',
+//       area: '17.71  м2',
+//       image: 'https://via.placeholder.com/400x300?text=Floor+2+Room+4',
+//     },
+//     {
+//       id: 'room5',
+//       name: 'Room 4',
+//       area: '17.71  м2',
+//       image: 'https://via.placeholder.com/400x300?text=Floor+2+Room+4',
+//     },
+//     {
+//       id: 'room6',
+//       name: 'Room 4',
+//       area: '17.71  м2',
+//       image: 'https://via.placeholder.com/400x300?text=Floor+2+Room+4',
+//     },
+//     {
+//       id: 'room7',
+//       name: 'Room 4',
+//       area: '17.71  м2',
+//       image: 'https://via.placeholder.com/400x300?text=Floor+2+Room+4',
+//     },
+//   ],
+// };
 
+let floorData = {};
 const floorSelector = document.getElementById('floor-selector');
 const roomSelector = document.getElementById('room-selector');
 const roomImage = document.getElementById('room-image');
-console.log(floorSelector, roomSelector, roomImage);
+const pageId = document.querySelector('.sh-plannings').dataset.flat;
 let currentFloor = null;
+let swiperMaterials; // Declare swiperMaterials
+
+// ... (insertButton and insertFloorButton functions - no changes needed)
+
+// Function to fetch data AND THEN render floors
+const fetchDataAndRender = () => {
+  const fd = new FormData();
+  fd.append('action', 'getHouseInfo');
+  fd.append('id', pageId);
+
+  axios
+    .post('/wp-admin/admin-ajax.php', fd)
+    .then(res => {
+      floorData = res.data; // Data is now available!
+      console.log(floorData);
+      // NOW you can safely render the floors:
+      floorSelector.innerHTML = ''; // Clear existing buttons
+      Object.keys(floorData).forEach((floor, index) => {
+        console.log(floor);
+        insertFloorButton(floor, index + 1, floorSelector, () => selectFloor(floor));
+        if (index === 0) {
+          selectFloor(floor); // Auto-select the first floor
+        }
+      });
+
+      // Initialize Swiper AFTER floor buttons are in the DOM:
+      swiperMaterials = new Swiper('.swiper-materials-btns', {
+        speed: 1000,
+        slidesPerView: 'auto',
+        spaceBetween: 8,
+        // ... (your Swiper configuration)
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+      // Handle the error (e.g., display a message to the user):
+      floorSelector.innerHTML = '<p>Error loading data. Please try again later.</p>';
+    });
+};
+
+// ... (renderRooms, selectFloor, and selectRoom functions - no changes needed)
+
+// Call fetchDataAndRender when the DOM is ready:
+document.addEventListener('DOMContentLoaded', fetchDataAndRender);
 
 // Helper function to insert buttons
-const insertButton = (text, area, id, container, callback) => {
+function insertButton(text, area, id, container, callback) {
   container.insertAdjacentHTML(
     'beforeend',
     `<div class="swiper-slide" data-id="${id}"> 
@@ -160,7 +207,7 @@ const insertButton = (text, area, id, container, callback) => {
   );
   const button = container.querySelector(`.swiper-slide[data-id="${id}"]`);
   button.addEventListener('click', callback);
-};
+}
 
 // Render rooms based on the selected floor
 const renderRooms = floor => {
@@ -172,7 +219,7 @@ const renderRooms = floor => {
     if (index === 0) {
       selectRoom(floor, room.id); // Auto-select the first room
     }
-    swiperMaterials.update();
+    // swiperMaterials.update();
   });
 };
 
@@ -200,7 +247,7 @@ const selectRoom = (floor, roomId) => {
     })
     .to(roomImage, { autoAlpha: 1, duration: 0.25 });
 };
-const insertFloorButton = (floor, number, container, callback) => {
+function insertFloorButton(floor, number, container, callback) {
   container.insertAdjacentHTML(
     'beforeend',
     `<button class="sh-plannings__floors-btn" data-floor="${floor}"> 
@@ -214,7 +261,7 @@ const insertFloorButton = (floor, number, container, callback) => {
   );
   const button = container.querySelector(`.sh-plannings__floors-btn[data-floor="${floor}"]`);
   button.addEventListener('click', callback);
-};
+}
 // Render floors
 floorSelector.innerHTML = '';
 Object.keys(floorData).forEach((floor, index) => {

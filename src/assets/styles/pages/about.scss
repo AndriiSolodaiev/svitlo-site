@@ -1,3 +1,15 @@
+.about-hero {
+  .sp-hero__content {
+    @include laptop {
+      transform: translateY(30%);
+    }
+
+    @include desktop {
+      transform: translateY(50%);
+    }
+  }
+}
+
 .about-hero .sp-hero__content {
   h1 {
     text-transform: uppercase;

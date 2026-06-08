@@ -204,7 +204,7 @@
     background-color: transparent;
     position: relative;
     padding: var(--offset);
-    height: 650px;
+    height: 80vh;
     max-height: 100vh;
     overflow: hidden;
     margin: 0 var(--offset);
@@ -212,12 +212,12 @@
 
     &__img-pc {
       display: block;
-      position: absolute;
-      width: 100%;
+       margin-right: 10px;
+       
+     border-radius: $border-radius-block;
+      width: 70%;
       height: 100%;
-      z-index: -1;
-      top: 0;
-      left: 0;
+      
       object-fit: cover;
     }
   }

@@ -196,7 +196,7 @@ document.querySelectorAll('a').forEach(link => {
     link.getAttribute('href').split('').length > 1
   ) {
     const linkHref = link.getAttribute('href');
-    console.log(link.getAttribute('href').split(''));
+    
     link.setAttribute('href', linkHref + '.html');
   }
 });

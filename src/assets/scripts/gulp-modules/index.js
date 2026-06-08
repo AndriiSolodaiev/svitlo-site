@@ -21,6 +21,8 @@ let calcOffset =
       (rightBlockCards.length - leftBlockCards.length) * gap;
 console.log(calcOffset);
 
+leftBlock.style.marginBottom = `${calcOffset}px`;
+
 let tl = gsap.timeline({
   scrollTrigger: {
     trigger: '.projects',
@@ -50,6 +52,7 @@ window.addEventListener('orientationchange', function() {
           (rightBlockCards.length - leftBlockCards.length) * gap;
 
     console.log(calcOffset);
+    leftBlock.style.marginBottom = `${calcOffset}px`;
     tl = gsap.timeline({
       scrollTrigger: {
         trigger: '.projects',

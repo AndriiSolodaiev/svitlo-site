@@ -177,3 +177,7 @@ $btn-size: 56px;
 
 
 }
+
+@function vw($px) {
+  @return ($px / 1920) * 100vw;
+}

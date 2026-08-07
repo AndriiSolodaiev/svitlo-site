@@ -149,9 +149,11 @@ let floorData = {};
 const floorSelector = document.getElementById('floor-selector');
 const roomSelector = document.getElementById('room-selector');
 const roomImage = document.getElementById('room-image');
+const roomImageWrap = roomImage.parentElement;
 const pageId = document.querySelector('.sh-plannings').dataset.flat;
 let currentFloor = null;
 let swiperMaterials; // Declare swiperMaterials
+let roomFadeTween = null;
 
 // ... (insertButton and insertFloorButton functions - no changes needed)
 
@@ -219,8 +221,8 @@ const renderRooms = floor => {
     if (index === 0) {
       selectRoom(floor, room.id); // Auto-select the first room
     }
-    // swiperMaterials.update();
   });
+  if (swiperMaterials) swiperMaterials.update();
 };
 
 // Handle floor selection
@@ -238,14 +240,48 @@ const selectRoom = (floor, roomId) => {
   Array.from(roomSelector.querySelectorAll('.swiper-slide')).forEach(button => {
     button.classList.toggle('active', button.dataset.id === roomId);
   });
-  gsap
-    .timeline()
-    .to(roomImage, { autoAlpha: 0, duration: 0.25 })
-    .add(() => {
-      roomImage.src = room.image;
-      roomImage.alt = room.name;
-    })
-    .to(roomImage, { autoAlpha: 1, duration: 0.25 });
+
+  if (roomImage.dataset.roomId === roomId) return;
+
+  const swapImage = () => {
+    if (roomFadeTween) roomFadeTween.kill();
+    roomImageWrap.querySelectorAll('.sh-plannings__img-clone').forEach(el => el.remove());
+
+    // Snapshot of the outgoing image, placed exactly on top of the current one,
+    // so it can fade out while the new image fades in underneath (true crossfade).
+    const clone = roomImage.cloneNode(true);
+    clone.classList.add('sh-plannings__img-clone');
+    clone.removeAttribute('id');
+    const imgRect = roomImage.getBoundingClientRect();
+    const wrapRect = roomImageWrap.getBoundingClientRect();
+    clone.style.position = 'absolute';
+    clone.style.top = `${imgRect.top - wrapRect.top}px`;
+    clone.style.left = `${imgRect.left - wrapRect.left}px`;
+    clone.style.margin = '0';
+    clone.style.pointerEvents = 'none';
+    roomImageWrap.appendChild(clone);
+
+    roomImage.src = room.image;
+    roomImage.alt = room.name;
+    roomImage.dataset.roomId = roomId;
+    gsap.set(roomImage, { autoAlpha: 0 });
+
+    roomFadeTween = gsap.timeline({
+      onComplete: () => clone.remove(),
+    });
+    roomFadeTween
+      .to(clone, { autoAlpha: 0, duration: 0.4, ease: 'power1.out' }, 0)
+      .to(roomImage, { autoAlpha: 1, duration: 0.4, ease: 'power1.out' }, 0);
+  };
+
+  const preload = new Image();
+  preload.src = room.image;
+  if (preload.complete) {
+    swapImage();
+  } else {
+    preload.onload = swapImage;
+    preload.onerror = swapImage;
+  }
 };
 function insertFloorButton(floor, number, container, callback) {
   container.insertAdjacentHTML(

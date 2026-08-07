@@ -101,9 +101,13 @@
   h1 {
     @include title-text;
     color: $wc;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
     padding-left: var(--offset);
     padding-right: var(--offset);
+
+    @include laptop {
+      margin-bottom: vw(32);
+    }
 
   }
 
@@ -235,25 +239,30 @@
   }
 
   &.mob {
-    background-color: $second-accent-color;
+    // background-color: $second-accent-color;
     width: 100%;
+    
     position: relative;
     overflow: hidden;
-    border: none;
+    // border: none;
 
-    h3,
-    p {
-      color: $wc;
-    }
+    // h3,
+    // p {
+    //   color: $wc;
+    // }
 
     img {
       position: absolute;
       bottom: 0;
       right: 0;
-      height: 100%;
+      height: 60%;
       width: auto
     }
-
+    svg {
+      path {
+        stroke: $bc;
+      }
+    }
   }
 
   @include tablet {
@@ -276,8 +285,11 @@
       }
 
       svg path {
-        fill: $accent-color
+        
+        stroke: $accent-color;
+      
       }
+
 
       img {
         display: none;
@@ -300,6 +312,10 @@
   svg {
     width: 24px;
     height: 24px;
+    @include laptop {
+      width: vw(40);
+      height: vw(40);
+    }
   }
 }
 
@@ -325,10 +341,9 @@
     height: 100%;
   }
 
-  iframe {
+  .map-canvas {
     width: 100%;
     height: 100%;
-
   }
 }
 
@@ -382,7 +397,7 @@
     justify-content: space-between;
     align-items: center;
     padding-right: 0px;
-
+    height: auto;
     @include laptop {
       flex: 1;
       box-shadow: 5px -15px 10px 0px rgba(153, 153, 153, 0.05), 2px -7px 7px 0px rgba(153, 153, 153, 0.09), 1px -2px 4px 0px rgba(153, 153, 153, 0.10), 14px -43px 13px 0px rgba(153, 153, 153, 0.00), -9px 27px 12px 0px rgba(153, 153, 153, 0.01), -5px 15px 10px 0px rgba(153, 153, 153, 0.05), -2px 7px 7px 0px rgba(153, 153, 153, 0.09), -1px 2px 4px 0px rgba(153, 153, 153, 0.10);
@@ -391,9 +406,10 @@
 
     img {
       width: 50%;
-      aspect-ratio: 2/1.2;
-      object-fit: cover;
-      object-position: center;
+      // aspect-ratio: 2/1.2;
+      margin-bottom: -16px;
+      object-fit: contain;
+      object-position: bottom;
       align-self: stretch;
       border-radius: 4px;
     }
@@ -417,7 +433,7 @@
     .info-wrap {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      
       gap: 24px;
 
       .info-item {
@@ -483,7 +499,7 @@
     @include laptop {
       position: static;
       display: flex;
-
+      padding:vw(48) vw(30);
       flex-direction: column;
       width: 30%;
     }
@@ -515,14 +531,24 @@
     h2 {
       @include subtitle-text;
       color: $accent-color;
-      margin-bottom: 16px;
-
+      margin-bottom: 24px;
+      text-transform: uppercase; 
+      
+      @include laptop {
+        margin-bottom: vw(32);
+      }
+      @media screen and (max-width: 768px) {
+        font-size: 24px;
+      }
     }
 
     &>p {
       @include general-text;
       color: $text-color;
       margin-bottom: 24px;
+      @include laptop {
+          font-size: vw(20);
+        }
     }
 
     .content__bottom-wrap {
@@ -536,7 +562,7 @@
 
       .content-price {
         &>span {
-          @include tiny-text;
+          @include general-text;
           color: $light-gray-color;
 
         }
@@ -608,11 +634,15 @@
       justify-content: space-between;
       margin-bottom: 10px;
       padding: 0 8px;
-
+      gap: 20px;
+      @include laptop {
+        margin-bottom: 4px;
+      
+      }
       h3 {
         @include menu-text;
         color: $accent-color;
-
+        max-width: 45%;
       }
 
       &>div {
@@ -628,6 +658,7 @@
         &>p {
           @include subgeneral-text;
           color: $accent-color;
+          white-space: nowrap;
         }
       }
 
@@ -635,24 +666,33 @@
 
     .type-svg-wrap {
       display: flex;
+      align-items: center;
       gap: 16px;
       margin-bottom: 16px;
       padding: 0 8px;
 
       .type-svg-item {
         display: flex;
+        align-items: center;
         gap: 8px;
-        @include tiny-text;
+        @include general-text;
         color: $light-gray-color;
 
         svg {
           width: 24px;
           height: 24px;
+          @include laptop {
+            width: vw(40);
+            height: vw(40);
+          }
         }
 
         .type-item-text {
           display: flex;
           gap: 4px;
+          @include laptop {
+            font-size: 20px;
+          }
         }
 
       }
@@ -923,6 +963,20 @@
       height: calc(100vh - var(--offset) * 2);
     }
 
+    .slide-bg {
+      position: absolute;
+      z-index: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      filter: blur(40px);
+      // scaled up so the blur doesn't reveal empty edges around the frame
+      transform: scale(1.15);
+    }
+
     .mask {
       position: absolute;
       z-index: 2;
@@ -931,12 +985,14 @@
       background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 30%, rgba(0, 0, 0, 0.70) 87%);
     }
 
-    img {
+    .slide-image {
       position: absolute;
       z-index: 1;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
     }
 
   }

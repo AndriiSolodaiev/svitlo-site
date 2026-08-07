@@ -144,6 +144,15 @@ document.body.addEventListener('click', function(evt) {
     }
   }
 });
+// Закриття форми запису на перегляд після вдалої відправки
+window.addEventListener('closeCallUsModal', function() {
+  const overflow = document.querySelector('[data-call-us__overflow]');
+  if (!overflow || overflow.classList.contains('hidden')) return;
+  window.dispatchEvent(new Event('start-scroll'));
+  overflow.classList.add('hidden');
+  headerControls('home');
+});
+
 // Закриття модальних вікон по свайпу
 document.addEventListener('DOMContentLoaded', function() {
   const menu = document.querySelector('[data-menu]');

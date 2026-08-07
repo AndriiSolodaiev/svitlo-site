@@ -19,7 +19,11 @@ const footer = document.querySelector('footer');
 const initFooter = () => {
   const createFormValidRef = document.querySelectorAll('[contact-form-js]');
   createFormValidRef.forEach(el => {
-    contactFormFooter(el);
+    contactFormFooter(el, () => {
+      if (el.closest('[data-call-us-modal]')) {
+        window.dispatchEvent(new Event('closeCallUsModal'));
+      }
+    });
   });
 };
 

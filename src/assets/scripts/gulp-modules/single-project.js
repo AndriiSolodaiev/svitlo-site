@@ -3,7 +3,9 @@ import { gsap, ScrollTrigger, CustomEase } from 'gsap/all';
 
 import device from 'current-device';
 import { initSmoothScrolling } from '../modules/scroll/leniscroll';
+import initSingleProjectMap from '../modules/map/singleProjectMap';
 initSmoothScrolling();
+initSingleProjectMap();
 
 // if (device.iphone()) {
 //   document.querySelector('html').style.overscrollBehavior = 'none';

@@ -234,6 +234,7 @@
       @include subtitle-text;
       color: $accent-color;
       margin-bottom: 24px;
+
     }
   }
 
@@ -241,12 +242,12 @@
     background-color: $wc ;
     border-radius: $border-radius-block;
     width: 30%;
-    padding: 30px;
+    padding: vw(40) vw(30);
     overflow: hidden;
 
     h2 {
       font-size: 2.916vw;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
   }
 }

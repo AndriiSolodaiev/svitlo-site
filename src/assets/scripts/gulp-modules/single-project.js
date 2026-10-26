@@ -35,10 +35,10 @@ const swiperTypes = new Swiper('.swiper-types', {
   spaceBetween: 8,
   breakpoints: {
     768: {
-      slidesPerView: 2,
+      slidesPerView: 2.1,
     },
     1366: {
-      slidesPerView: 2,
+      slidesPerView: 2.1,
       spaceBetween: 10,
     },
   },
